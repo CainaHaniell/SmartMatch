@@ -1,11 +1,25 @@
 body{
-    background-color: rgb(231, 0, 0);
+    background-color: black;;
 }
 
-section{
+.Banner-inicial{
     background-image: url('/Img/Smart.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 80%;
-    height: 110vh
+    background-position: center 61%;
+    height: 105vh
 }   
+
+.section-sobre{
+    background-color: rgb(39, 41, 41);
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.sobre-titulo{
+    background-color: red;
+    margin-bottom: 300px;
+    margin-right: 300px;
+    font-size: 90px;
+    font-weight: 900;
+}
