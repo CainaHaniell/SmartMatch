@@ -21,19 +21,22 @@ header {
 .header-logo img {
   transform: scale(1.4);
   cursor: pointer;
+  margin-left: 80px;
 }
 
 .menu-links {
   display: flex;
-  gap: 40px;
+  gap: 50px;
   align-items: center;
+  margin-left: 200px;
+  
 }
 
 .menu-links a {
   position: relative;
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 19px;
   transition: color 0.3s;
 }
 
@@ -44,7 +47,7 @@ header {
   bottom: 0;
   width: 0%;
   height: 2px;
-  background-color: rgb(174, 174, 174);
+  background-color: rgb(214, 213, 213);
   transition: width 0.3s ease-in-out;
 }
 

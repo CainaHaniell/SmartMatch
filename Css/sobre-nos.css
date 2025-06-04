@@ -1,0 +1,11 @@
+body{
+    background-color: rgb(231, 0, 0);
+}
+
+section{
+    background-image: url('/Img/Smart.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 80%;
+    height: 110vh
+}   
