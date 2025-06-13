@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/sobre-nos.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="meu-header"></div>
+    <script>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("meu-header").innerHTML = data;
+        });
+    </script>
+    <section class="Banner-inicial"></section>
+    <section class="section-sobre">
+      <div class="sobre-titulo">
+        <h1 class="sobre-nos">
+          SOBRE <br />
+          NÓS
+        </h1>
+      </div>
+      <div class="destaque">
+        <p class="sobre-descricao">
+          <span class="sobre-destaque">SmartMatch</span> é um site desenvolvido
+          para ajudar usuários a <br />
+          encontrar especificações ideais de notebooks e celulares, com <br />
+          base nas suas necessidades. A ideia é facilitar a comparação <br />
+          entre modelos e oferecer recomendações claras, sem <br />
+          enrolação.
+        </p>
+     
+      <div class="sobre-imagens">
+        <img
+          src="/Img/Smart.png"
+          alt="SmartMatch"
+          class="sobre__imagem"
+          width="300px" />
+        <img
+          src="/Img/Smart.png"
+          alt="SmartMatch"
+          class="sobre__imagem"
+          width="300px" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
