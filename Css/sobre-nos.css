@@ -1,0 +1,37 @@
+body {
+  background-color: black;
+}
+
+.Banner-inicial {
+  background-image: url("/Img/Smart.png");
+  background-position: center 61%;
+  background-repeat: no-repeat;
+  height: 105vh;
+}
+
+.section-sobre {
+  background-color: rgb(0, 0, 0);
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.sobre-titulo {
+  margin-bottom: 300px;
+  margin-right: 300px;
+  font-size: 90px;
+  font-weight: 900;
+}
+.sobre-nos {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.destaque {
+  margin-bottom: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  flex-direction: column;
+}
+.sobre-destaque {
+  font-weight: bold;
+}

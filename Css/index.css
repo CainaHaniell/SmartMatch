@@ -1,0 +1,140 @@
+/* Resetando geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+  background-color: #f0f0f0;
+  font-family: sans-serif;
+}
+
+/* Section principal */
+section {
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Texto do título */
+.texto h1 {
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  font-size: 45px;
+  color: #333;
+}
+
+/* Container dos cards */
+.escolher-dispositivo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6%;
+  gap: 40px;
+  flex-wrap: wrap; /* Aqui faz quebrar quando não cabe */
+}
+
+/* Card */
+.card-dispositivo {
+  width: 320px;
+  height: 400px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-dispositivo:hover {
+  transform: scale(1.05);
+}
+
+.Dispositivos {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.Dispositivos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.paragrafo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.paragrafo p {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 5px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+/* 🔥 RESPONSIVIDADE PESADA 🔥 */
+@media (max-width: 1024px) {
+  .card-dispositivo {
+    width: 280px;
+    height: 350px;
+  }
+
+  .paragrafo p {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .texto h1 {
+    font-size: 35px;
+  }
+
+  .card-dispositivo {
+    width: 90%;
+    height: 350px;
+  }
+
+  .paragrafo p {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .texto h1 {
+    font-size: 28px;
+  }
+
+  .escolher-dispositivo {
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .card-dispositivo {
+    width: 95%;
+    height: 300px;
+  }
+
+  .paragrafo p {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+}

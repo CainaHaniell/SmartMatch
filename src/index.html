@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Css/index.css" />
+    <title>SmartMatch</title>
+  </head>
+  <body>
+    <div id="meu-header"></div>
+    <script>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("meu-header").innerHTML = data;
+        });
+    </script>
+
+    <section>
+      <div class="texto">
+        <h1>ESCOLHA SEU DISPOSITIVO</h1>
+      </div>
+
+      <div class="escolher-dispositivo">
+        <!-- BLOCO 1 -->
+        <a href="/src/sobre-nos.html">
+        <div class="card-dispositivo">
+          <div class="Dispositivos">
+            <img src="/Img/smart-CELL.png" alt="Celular" />
+            <div class="paragrafo">
+              <p>Celular</p>
+            </div>
+          </div>
+        </div>
+      </a>
+        <!-- BLOCO 2 -->
+        <a href="/src/sobre-nos.html">
+        <div class="card-dispositivo">
+          <div class="Dispositivos">
+            <img src="/Img/download.jpg" alt="Notebook" />
+            <div class="paragrafo">
+              <p>Notebook</p>
+            </div>
+          </div>
+        </div>
+        </a>
+      </div>
+    </section>
+  </body>
+</html>
