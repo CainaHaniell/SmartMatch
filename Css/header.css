@@ -10,13 +10,20 @@
 
 /* HEADER GERAL */
 header {
-  background-color: rgba(0, 0, 0, 0.967);
   width: 100%;
-  padding: 10px 40px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(90deg, rgba(18,18,18,0.8) 0%, rgba(36,36,36,0.8) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  padding: 12px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 /* LOGO */
@@ -75,13 +82,14 @@ header {
 
 .entrar {
   display: flex;
-  gap: 30px;
+  gap: 10px;
   align-items: center;
 }
 
 .social-icon {
   transition: transform 0.3s ease-in;
-  transform: scale(1.2);
+  transform: scale(1.3);
+  margin-right: 20px;
 }
 
 .social-icon:hover {

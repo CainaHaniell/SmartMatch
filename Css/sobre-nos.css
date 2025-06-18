@@ -1,16 +1,17 @@
 body {
-  background-color: black;
+  background-color: #292929;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .Banner-inicial {
-  background-image: url("/Img/Smart.png");
+  background-image: url("/Img/smart-back.png");
   background-position: center 61%;
   background-repeat: no-repeat;
   height: 105vh;
 }
 
 .section-sobre {
-  background-color: rgb(0, 0, 0);
+  background-color: #292929;
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -21,7 +22,7 @@ body {
   margin-bottom: 300px;
   margin-right: 300px;
   font-size: 90px;
-  font-weight: 900;
+
 }
 .sobre-nos {
   font-family: Arial, Helvetica, sans-serif;
@@ -34,4 +35,14 @@ body {
 }
 .sobre-destaque {
   font-weight: bold;
+}
+.sobre-descricao{
+  font-weight: 300;
+}
+.sobre-imagens{
+  gap: 100px;
+  margin-top: 90px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
