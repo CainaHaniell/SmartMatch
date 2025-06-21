@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMatch</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../Css/sobre-nos.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div id="meu-header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("meu-header").innerHTML = data;
+      });
+  </script>
+
+  <!-- BANNER -->
+  <section class="banner-inicial">
+    <div class="banner-imagens">
+      <img src="/Img/2.png" alt="Notebook SmartMatch" class="img-notebook" />
+      <img src="/Img/3.png" alt="Smartphone SmartMatch" class="img-smartphone" />
+    </div>
+
+    <div class="banner-conteudo">
+      <h1 class="banner-titulo">
+        <span class="titulo-smart">SMART</span>
+        <span class="titulo-match">MATCH</span>
+      </h1>
+      <p class="banner-subtitulo">
+        DESCUBRA AS ESPECIFICAÇÕES<br />PERFEITAS PARA O SEU USO
+      </p>
+    </div>
+  </section>
+
+  <!-- SOBRE NÓS -->
+  <section class="section-sobre">
+    <div class="sobre-conteudo">
+      <div class="sobre-texto">
+        <h1 class="sobre-titulo">SOBRE<br />NÓS</h1>
+        <p class="sobre-descricao">
+          <span class="sobre-destaque">SmartMatch</span> é um site
+          desenvolvido para ajudar usuários a encontrar especificações ideais
+          de notebooks e celulares, com base nas suas necessidades. A ideia é
+          facilitar a comparação entre modelos e oferecer recomendações
+          claras, sem enrolação.
+        </p>
+      </div>
+
+      <div class="sobre-imagens">
+        <img src="/Img/download.jpg" alt="SmartMatch" class="sobre-imagem" />
+        <img src="/Img/download.jpg" alt="SmartMatch" class="sobre-imagem" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    const sr = ScrollReveal({
+      duration: 1000,
+      distance: '60px',
+      easing: 'ease-in-out',
+      reset: false 
+    });
+
+    sr.reveal('.banner-titulo', { origin: 'top' });
+    sr.reveal('.banner-subtitulo', { origin: 'bottom', delay: 200 });
+    sr.reveal('.section-sobre', { origin: 'bottom', delay: 100 });
+    sr.reveal('.sobre-titulo', { origin: 'left', delay: 300 });
+    sr.reveal('.sobre-descricao', { origin: 'bottom', delay: 400 });
+    sr.reveal('.sobre-imagem', { origin: 'right', interval: 200 });
+  </script>
+</body>
+</html>

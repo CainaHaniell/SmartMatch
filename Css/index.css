@@ -1,0 +1,156 @@
+/* Reset geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+    overflow: hidden  
+}
+
+/* Body com degrade e altura total */
+html, body {
+  height: 100%;
+  background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
+  font-family: "Bebas Neue", sans-serif;
+  color: white;
+}
+
+/* Header fixo — ajusta aqui se precisar */
+#meu-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Ajusta se o teu header for maior/menor */
+  background-color: #111;
+  z-index: 999;
+}
+
+/* Section ocupa o resto da tela descontando o header */
+section {
+  min-height: calc(100vh - 80px);
+  padding-top: 20px; /* Pequeno espaçamento pra respirar */
+  margin-top: 80px; /* Pra não ficar atrás do header */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Começa do topo */
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Título grande responsivo */
+.texto h1 {
+  font-size: clamp(32px, 6vw, 50px);
+  text-align: center;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+/* Container flex dos cards */
+.escolher-dispositivo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px; /* Limita largura pra ficar mais bonito */
+  padding: 0 20px;
+}
+
+/* Cards responsivos */
+.card-dispositivo {
+  width: clamp(250px, 30vw, 300px);
+  height: clamp(300px, 40vh, 350px);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card-dispositivo:hover {
+  transform: scale(1.05);
+}
+
+/* Box do conteúdo do card */
+.Dispositivos {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 8px 16px rgba(255, 255, 255, 0.15),
+    0 4px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.card-dispositivo:hover .Dispositivos {
+  box-shadow:
+    0 12px 24px rgba(255, 255, 255, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.85);
+}
+
+/* Imagem do card */
+.Dispositivos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Texto rodapé com fundo semi-transparente e blur */
+.paragrafo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background-color: rgba(41, 41, 41, 0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.4s ease;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.card-dispositivo:hover .paragrafo {
+  background-color: rgba(26, 25, 25, 0.7);
+}
+
+/* Texto do rodapé */
+.paragrafo p {
+  font-size: clamp(18px, 3vw, 30px);
+  letter-spacing: 5px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+
+/* Responsividade - mais leve */
+@media (max-width: 768px) {
+  .escolher-dispositivo {
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .card-dispositivo {
+    width: 90vw;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .texto h1 {
+    font-size: 18px;
+  }
+
+  .card-dispositivo {
+    height: 280px;
+    background-color: red;
+  }
+}

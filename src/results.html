@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Css/results.css" />
+    <title>SmartMatch</title>
+  </head>
+  <body>
+    <div id="meu-header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("meu-header").innerHTML = data;
+      });
+  </script>
+  </body>
+</html>
