@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 /* Reset geral */
+=======
+
+/* Resetando geral */
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+<<<<<<< HEAD
     overflow: hidden  
 }
 
@@ -47,10 +53,44 @@ section {
 }
 
 /* Container flex dos cards */
+=======
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+
+/* Section principal */
+section {
+  margin-top: 100px;
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Texto do título */
+.texto h1 {
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  font-size: 75px;
+  color: #ffffff;
+}
+
+/* Container dos cards */
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 .escolher-dispositivo {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   flex-wrap: wrap;
   gap: 40px;
   width: 100%;
@@ -64,17 +104,36 @@ section {
   height: clamp(300px, 40vh, 350px);
   transition: transform 0.3s ease;
   cursor: pointer;
+=======
+  margin: 6%;
+  gap: 40px;
+  flex-wrap: wrap; /* Aqui faz quebrar quando não cabe */
+}
+
+/* Card */
+.card-dispositivo {
+  width: 320px;
+  height: 400px;
+  transition: transform 1s;
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 }
 
 .card-dispositivo:hover {
   transform: scale(1.05);
+<<<<<<< HEAD
 }
 
 /* Box do conteúdo do card */
+=======
+  
+}
+
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 .Dispositivos {
   position: relative;
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow:
     0 8px 16px rgba(255, 255, 255, 0.15),
@@ -91,22 +150,38 @@ section {
 }
 
 /* Imagem do card */
+=======
+  
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 15px rgba(255, 255, 255, 0.192);
+  border-radius: 15px;
+  padding: 0;
+  overflow: hidden;
+}
+
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 .Dispositivos img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
+<<<<<<< HEAD
   user-select: none;
   pointer-events: none;
 }
 
 /* Texto rodapé com fundo semi-transparente e blur */
+=======
+}
+
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 .paragrafo {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 25%;
+<<<<<<< HEAD
   background-color: rgba(41, 41, 41, 0.6);
   backdrop-filter: blur(10px);
   display: flex;
@@ -141,11 +216,58 @@ section {
   .card-dispositivo {
     width: 90vw;
     height: 320px;
+=======
+  background-color: rgba(41, 41, 41, 0.267);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.4s ease; /* <- Transição suave */
+}
+.card-dispositivo:hover .paragrafo {
+  background-color: rgba(26, 25, 25, 0.2); /* <- Escurece mais no hover */
+  backdrop-filter: blur(10px);
+}
+.paragrafo p {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 5px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+/* 🔥 RESPONSIVIDADE PESADA 🔥 */
+@media (max-width: 1024px) {
+  .card-dispositivo {
+    width: 280px;
+    height: 350px;
+  }
+
+  .paragrafo p {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .texto h1 {
+    font-size: 35px;
+  }
+
+  .card-dispositivo {
+    width: 90%;
+    height: 350px;
+  }
+
+  .paragrafo p {
+    font-size: 24px;
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
   }
 }
 
 @media (max-width: 480px) {
   .texto h1 {
+<<<<<<< HEAD
     font-size: 18px;
   }
 
@@ -154,3 +276,26 @@ section {
     background-color: red;
   }
 }
+=======
+    font-size: 28px;
+  }
+
+  .escolher-dispositivo {
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .card-dispositivo {
+    width: 95%;
+    height: 300px;
+  }
+
+  .paragrafo p {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+}
+
+
+
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c

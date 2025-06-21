@@ -6,8 +6,11 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
+<<<<<<< HEAD
   color: white;
   user-select: none;
+=======
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 }
 
 /* HEADER GERAL */
@@ -41,7 +44,11 @@ header {
   transform: scale(1.6);
 }
 
+<<<<<<< HEAD
 /* MENU LINKS HORIZONTAL */
+=======
+/* MENU LINKS */
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 .menu-links {
   display: flex;
   gap: 50px;
@@ -50,9 +57,13 @@ header {
   justify-content: center;
   margin-left: 200px;
 }
+<<<<<<< HEAD
 .git{
   filter: invert(1);
 }
+=======
+
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 .menu-links a {
   position: relative;
   color: white;
@@ -100,6 +111,7 @@ header {
   transform: scale(1.4);
 }
 
+<<<<<<< HEAD
 /* FILTRO PARA O ÍCONE DO GITHUB (invertendo cor) */
 .github {
   filter: invert(1);
@@ -145,6 +157,8 @@ header {
   left: 0;
 }
 
+=======
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 /* ===================== RESPONSIVO ===================== */
 @media (max-width: 1024px) {
   header {
@@ -171,6 +185,7 @@ header {
   }
 }
 
+<<<<<<< HEAD
 @media (max-width: 780px) {
   /* Esconde menu horizontal, mostra botão sanduíche */
   .menu-links {
@@ -182,6 +197,8 @@ header {
   }
 }
 
+=======
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 @media (max-width: 600px) {
   .menu-links {
     flex-direction: column;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* RESET */
 * {
   margin: 0;
@@ -189,3 +190,53 @@ body {
     font-size: 18px;
   }
 }
+=======
+body {
+  background-color: #292929;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.Banner-inicial {
+  background-image: url("/Img/smart-back.png");
+  background-position: center 61%;
+  background-repeat: no-repeat;
+  height: 105vh;
+}
+
+.section-sobre {
+  background-color: #292929;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.sobre-titulo {
+  margin-bottom: 300px;
+  margin-right: 300px;
+  font-size: 90px;
+
+}
+.sobre-nos {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.destaque {
+  margin-bottom: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  flex-direction: column;
+}
+.sobre-destaque {
+  font-weight: bold;
+}
+.sobre-descricao{
+  font-weight: 300;
+}
+.sobre-imagens{
+  gap: 100px;
+  margin-top: 90px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c

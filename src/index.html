@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<<<<<<< HEAD
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,6 +30,38 @@
     <div class="escolher-dispositivo">
       <!-- BLOCO 1 -->
       <a href="/src/results-cell.html">
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Css/index.css" />
+    <title>SmartMatch</title>
+  </head>
+  <body>
+    <div id="meu-header"></div>
+    <script>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("meu-header").innerHTML = data;
+        });
+    </script>
+
+    <section>
+      <div class="texto">
+        <h1>ESCOLHA SEU DISPOSITIVO</h1>
+      </div>
+
+      <div class="escolher-dispositivo">
+        <!-- BLOCO 1 -->
+        <a href="/src/sobre-nos.html">
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
         <div class="card-dispositivo">
           <div class="Dispositivos">
             <img src="/Img/celula.png" alt="Celular" />
@@ -38,8 +71,13 @@
           </div>
         </div>
       </a>
+<<<<<<< HEAD
       <!-- BLOCO 2 -->
       <a href="/src/results-note.html">
+=======
+        <!-- BLOCO 2 -->
+        <a href="/src/sobre-nos.html">
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
         <div class="card-dispositivo">
           <div class="Dispositivos">
             <img src="/Img/download.jpg" alt="Notebook" />
@@ -48,6 +86,7 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </a>
     </div>
   </section>
@@ -73,4 +112,27 @@
   </script>
 </body>
 
+=======
+        </a>
+      </div>
+    </section>
+  </body>
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Css/index.css">
+    <title>SmartMatch</title>
+</head>
+<body>
+    <div id="meu-header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("meu-header").innerHTML = data;
+      });
+  </script>
+</body>
+>>>>>>> fb906e5ee15cbcaa7c8e0a53f8d5d59abfd49e3c
 </html>
