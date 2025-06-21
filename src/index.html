@@ -1,76 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/Css/index.css" />
-  <title>SmartMatch</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMach - Encontre o Dispositivo Perfeito</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+   
+    <link rel="stylesheet" href="/Css/index.css"> <!-- Caso tenha um CSS geral -->
+
 </head>
-
 <body>
-  <div id="meu-header"></div>
-  <script>
-    fetch("header.html")
-      .then((res) => res.text())
-      .then((data) => {
-        document.getElementById("meu-header").innerHTML = data;
-      });
-  </script>
 
-  <section>
-    <div class="texto">
-      <h1>ESCOLHA SEU DISPOSITIVO</h1>
-    </div>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
 
-    <div class="escolher-dispositivo">
-      <!-- BLOCO 1 -->
-      <a href="/src/results-cell.html">
-        <div class="card-dispositivo">
-          <div class="Dispositivos">
-            <img src="/Img/celula.png" alt="Celular" />
-            <div class="paragrafo">
-              <p>Celular</p>
-            </div>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Encontre o Dispositivo Perfeito</h1>
+            <p>Sem enrolação, sem complicação. Apenas responda algumas perguntas simples e descubra qual celular ou notebook é ideal pra você.</p>
         </div>
-      </a>
-      <!-- BLOCO 2 -->
-      <a href="/src/results-note.html">
-        <div class="card-dispositivo">
-          <div class="Dispositivos">
-            <img src="/Img/download.jpg" alt="Notebook" />
-            <div class="paragrafo">
-              <p>Notebook</p>
-            </div>
-          </div>
+    </section>
+
+    <!-- Device Selection -->
+    <section class="device-selection">
+        <h2 class="section-title">Escolha seu Dispositivo</h2>
+        
+        <div class="device-grid">
+            <a href="/src/results-cell.html" class="device-card">
+                <div class="device-icon">📱</div>
+                <h3>Smartphones</h3>
+                <p>Encontre o celular ideal para suas necessidades. Do básico para WhatsApp até o top de linha para gaming e trabalho.</p>
+            </a>
+            
+            <a href="/src/results-note.html" class="device-card">
+                <div class="device-icon">💻</div>
+                <h3>Notebooks</h3>
+                <p>Descubra o laptop perfeito para trabalho, estudos ou entretenimento. Vamos te ajudar a escolher sem erro.</p>
+            </a>
         </div>
-      </a>
-    </div>
-  </section>
+    </section>
 
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script>
-    ScrollReveal().reveal('.texto', {
-      duration: 1000,
-      origin: 'top',
-      distance: '50px',
-      easing: 'ease-in-out',
-      reset: false,
-    });
+    <!-- Footer -->
+    <footer class="footer">
+        <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+        <span>© 2025 SmartMach - Todos os direitos reservados</span>
+    </footer>
 
-    ScrollReveal().reveal('.card-dispositivo', {
-      duration: 1000,
-      origin: 'bottom',
-      distance: '50px',
-      easing: 'ease-in-out',
-      interval: 200,
-      reset: false,
-    });
-  </script>
+    <!-- Script pra carregar o Header -->
+    <script>
+        fetch('header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        });
+    </script>
+
 </body>
-
 </html>
