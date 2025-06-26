@@ -1,115 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SmartMatch - Perfil de Uso</title>
-  <link rel="stylesheet" href="/Css/results-cell.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SmartMatch - Perfil de Uso</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .form-container {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(15, 23, 42, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  fieldset {
+    border: 1.5px solid #06b6d4;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+  }
+  legend {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #06b6d4;
+  }
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
+    gap: 12px 20px;
+    margin-top: 12px;
+  }
+  label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1rem;
+  }
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0; width: 0;
+  }
+  label span {
+    position: absolute;
+    left: 0; top: 2px;
+    height: 18px; width: 18px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    border: 2px solid #3b82f6;
+    transition: 0.3s;
+  }
+  input[type="checkbox"]:checked + span {
+    background-color: #06b6d4;
+    border-color: #06b6d4;
+  }
+  button {
+    display: block;
+    margin: 30px auto 0 auto;
+    padding: 15px 50px;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  #resultado-lateral {
+    max-width: 700px;
+    margin: 40px auto 0 auto;
+    background: rgba(6, 182, 212, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    font-size: 1rem;
+  }
+</style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-
-  <main class="main-container">
-    <div class="floating-elements">
-      <div class="floating-shape"></div>
-      <div class="floating-shape"></div>
-      <div class="floating-shape"></div>
-    </div>
-
-    <div class="form-container">
-      <div class="form-header fade-in">
-        <div class="device-icon">📱</div>
-        <h1 class="form-title">ESCOLHER CELULAR</h1>
-        <p class="form-subtitle">Marque os apps e recursos que você realmente usa</p>
-      </div>
-
-      <form id="form-uso" class="fade-in">
-        <fieldset>
-          <legend>Apps de Banco</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="nubank" /><span></span> Nubank</label>
-            <label><input type="checkbox" value="caixa" /><span></span> Caixa</label>
-            <label><input type="checkbox" value="bb" /><span></span> Banco do Brasil</label>
-            <label><input type="checkbox" value="itau" /><span></span> Itaú</label>
-            <label><input type="checkbox" value="inter" /><span></span> Inter</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Redes Sociais</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="whatsapp" /><span></span> WhatsApp</label>
-            <label><input type="checkbox" value="instagram" /><span></span> Instagram</label>
-            <label><input type="checkbox" value="facebook" /><span></span> Facebook</label>
-            <label><input type="checkbox" value="telegram" /><span></span> Telegram</label>
-            <label><input type="checkbox" value="twitter" /><span></span> Twitter</label>
-            <label><input type="checkbox" value="tiktok" /><span></span> TikTok</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Jogos</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="freefire" /><span></span> Free Fire</label>
-            <label><input type="checkbox" value="cod" /><span></span> COD Mobile</label>
-            <label><input type="checkbox" value="genshin" /><span></span> Genshin Impact</label>
-            <label><input type="checkbox" value="roblox" /><span></span> Roblox</label>
-            <label><input type="checkbox" value="clashroyale" /><span></span> Clash Royale</label>
-            <label><input type="checkbox" value="minecraft" /><span></span> Minecraft</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Streaming</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="youtube" /><span></span> YouTube</label>
-            <label><input type="checkbox" value="netflix" /><span></span> Netflix</label>
-            <label><input type="checkbox" value="spotify" /><span></span> Spotify</label>
-            <label><input type="checkbox" value="prime" /><span></span> Prime Video</label>
-            <label><input type="checkbox" value="globoplay" /><span></span> Globoplay</label>
-            <label><input type="checkbox" value="disneyplus" /><span></span> Disney+</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Uso da Câmera</legend>
-          <div class="radio-grid">
-            <label><input type="radio" name="camera" value="nenhum" checked /><span></span> Não uso</label>
-            <label><input type="radio" name="camera" value="pouco" /><span></span> Pouco</label>
-            <label><input type="radio" name="camera" value="muito" /><span></span> Muito</label>
-            <label><input type="radio" name="camera" value="profissional" /><span></span> Profissional</label>
-          </div>
-        </fieldset>
-
-        <div class="continue-section show">
-          <button class="continue-btn" type="button" onclick="gerarRecomendacao()">Ver Recomendação →</button>
+  <div class="form-container">
+    <h1>ESCOLHER CELULAR</h1>
+    <form id="form-uso">
+      <fieldset>
+        <legend>Apps de Banco</legend>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" value="nubank" /><span></span> Nubank</label>
+          <label><input type="checkbox" value="caixa" /><span></span> Caixa</label>
+          <label><input type="checkbox" value="bb" /><span></span> Banco do Brasil</label>
+          <label><input type="checkbox" value="itau" /><span></span> Itaú</label>
+          <label><input type="checkbox" value="inter" /><span></span> Inter</label>
         </div>
-      </form>
+      </fieldset>
 
-      <div id="resultado" class="fade-in"></div>
-    </div>
-  </main>
+      <fieldset>
+        <legend>Redes Sociais</legend>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" value="whatsapp" /><span></span> WhatsApp</label>
+          <label><input type="checkbox" value="instagram" /><span></span> Instagram</label>
+          <label><input type="checkbox" value="facebook" /><span></span> Facebook</label>
+          <label><input type="checkbox" value="telegram" /><span></span> Telegram</label>
+          <label><input type="checkbox" value="twitter" /><span></span> Twitter</label>
+          <label><input type="checkbox" value="tiktok" /><span></span> TikTok</label>
+        </div>
+      </fieldset>
 
-  <footer class="footer">
-    <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
-    <span>© 2025 SmartMach - Todos os direitos reservados</span>
-  </footer>
+      <fieldset>
+        <legend>Jogos</legend>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" value="freefire" /><span></span> Free Fire</label>
+          <label><input type="checkbox" value="cod" /><span></span> COD Mobile</label>
+          <label><input type="checkbox" value="genshin" /><span></span> Genshin Impact</label>
+          <label><input type="checkbox" value="roblox" /><span></span> Roblox</label>
+          <label><input type="checkbox" value="clashroyale" /><span></span> Clash Royale</label>
+          <label><input type="checkbox" value="minecraft" /><span></span> Minecraft</label>
+        </div>
+      </fieldset>
 
-  <script>
-    // Carregar header
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
-  
-    // Ativar animação fade-in visível
-    window.onload = () => {
-      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-    };
-  
+      <fieldset>
+        <legend>Streaming</legend>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" value="youtube" /><span></span> YouTube</label>
+          <label><input type="checkbox" value="netflix" /><span></span> Netflix</label>
+          <label><input type="checkbox" value="spotify" /><span></span> Spotify</label>
+          <label><input type="checkbox" value="prime" /><span></span> Prime Video</label>
+          <label><input type="checkbox" value="globoplay" /><span></span> Globoplay</label>
+          <label><input type="checkbox" value="disneyplus" /><span></span> Disney+</label>
+        </div>
+      </fieldset>
+
+      <button type="button" onclick="gerarRecomendacao()">Ver Recomendação →</button>
+    </form>
+  </div>
+
+  <div id="resultado-lateral"></div>
+
+<script>
+  const appsSpecs = {
+    nubank: { nome: "Nubank", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.1, armazenamentoIdealGB: 0.15, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    caixa: { nome: "Caixa", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.1, armazenamentoIdealGB: 0.15, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    bb: { nome: "Banco do Brasil", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.15, armazenamentoIdealGB: 0.2, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    itau: { nome: "Itaú", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.1, armazenamentoIdealGB: 0.15, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    inter: { nome: "Inter", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.1, armazenamentoIdealGB: 0.15, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+
+    whatsapp: { nome: "WhatsApp", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 0.3, armazenamentoIdealGB: 0.4, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    instagram: { nome: "Instagram", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 0.4, armazenamentoIdealGB: 0.5, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    facebook: { nome: "Facebook", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 0.35, armazenamentoIdealGB: 0.45, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    telegram: { nome: "Telegram", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.15, armazenamentoIdealGB: 0.2, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    twitter: { nome: "Twitter", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.2, armazenamentoIdealGB: 0.25, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    tiktok: { nome: "TikTok", memoriaMinGB: 3, memoriaIdealGB: 4, armazenamentoMinGB: 0.4, armazenamentoIdealGB: 0.5, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+
+    freefire: { nome: "Free Fire", memoriaMinGB: 4, memoriaIdealGB: 6, armazenamentoMinGB: 2, armazenamentoIdealGB: 3, processadorMin: "Snapdragon 410", processadorIdeal: "Snapdragon 625" },
+    cod: { nome: "COD Mobile", memoriaMinGB: 6, memoriaIdealGB: 8, armazenamentoMinGB: 3, armazenamentoIdealGB: 4, processadorMin: "Snapdragon 430", processadorIdeal: "Snapdragon 660" },
+    genshin: { nome: "Genshin Impact", memoriaMinGB: 8, memoriaIdealGB: 12, armazenamentoMinGB: 12, armazenamentoIdealGB: 15, processadorMin: "Snapdragon 845", processadorIdeal: "Snapdragon 855" },
+    roblox: { nome: "Roblox", memoriaMinGB: 4, memoriaIdealGB: 6, armazenamentoMinGB: 1, armazenamentoIdealGB: 1.5, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+    clashroyale: { nome: "Clash Royale", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.3, armazenamentoIdealGB: 0.4, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    minecraft: { nome: "Minecraft", memoriaMinGB: 6, memoriaIdealGB: 8, armazenamentoMinGB: 4, armazenamentoIdealGB: 5, processadorMin: "Snapdragon 660", processadorIdeal: "Snapdragon 855" },
+
+    youtube: { nome: "YouTube", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.2, armazenamentoIdealGB: 0.3, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    netflix: { nome: "Netflix", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 1, armazenamentoIdealGB: 1.5, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    spotify: { nome: "Spotify", memoriaMinGB: 1, memoriaIdealGB: 2, armazenamentoMinGB: 0.2, armazenamentoIdealGB: 0.3, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    prime: { nome: "Prime Video", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 1, armazenamentoIdealGB: 1.5, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    globoplay: { nome: "Globoplay", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 1, armazenamentoIdealGB: 1.5, processadorMin: "Qualquer", processadorIdeal: "Qualquer" },
+    disneyplus: { nome: "Disney+", memoriaMinGB: 2, memoriaIdealGB: 3, armazenamentoMinGB: 1, armazenamentoIdealGB: 1.5, processadorMin: "Qualquer", processadorIdeal: "Qualquer" }
+  };
+
+  function gerarRecomendacao() {
+    const form = document.getElementById('form-uso');
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
     
-  </script>
-  
+    let memoriaMinTotal = 0;
+    let memoriaIdealTotal = 0;
+    let armazenamentoMinTotal = 0;
+    let armazenamentoIdealTotal = 0;
+    let appsSelecionados = [];
+    let processadoresMin = new Set();
+    let processadoresIdeal = new Set();
+
+    checkboxes.forEach(cb => {
+      const app = appsSpecs[cb.value];
+      if (app) {
+        memoriaMinTotal += app.memoriaMinGB;
+        memoriaIdealTotal += app.memoriaIdealGB;
+        armazenamentoMinTotal += app.armazenamentoMinGB;
+        armazenamentoIdealTotal += app.armazenamentoIdealGB;
+        appsSelecionados.push(app.nome);
+        if(app.processadorMin !== "Qualquer") processadoresMin.add(app.processadorMin);
+        if(app.processadorIdeal !== "Qualquer") processadoresIdeal.add(app.processadorIdeal);
+      }
+    });
+
+    const resultadoEl = document.getElementById('resultado-lateral');
+    resultadoEl.innerHTML = `
+      <h2>Resumo do Perfil de Uso</h2>
+      <p><strong>Aplicativos selecionados:</strong> ${appsSelecionados.length ? appsSelecionados.join(', ') : 'Nenhum'}</p>
+      <p><strong>Armazenamento total dos apps (mínimo):</strong> ${armazenamentoMinTotal.toFixed(2)} GB</p>
+      <p><strong>Armazenamento total dos apps (ideal):</strong> ${armazenamentoIdealTotal.toFixed(2)} GB</p>
+      <hr>
+      <p><strong>Memória mínima necessária:</strong> ${memoriaMinTotal} GB</p>
+      <p><strong>Memória ideal necessária:</strong> ${memoriaIdealTotal} GB</p>
+      <hr>
+      <p><strong>Processadores mínimos recomendados:</strong> ${processadoresMin.size ? Array.from(processadoresMin).join(', ') : 'Qualquer'}</p>
+      <p><strong>Processadores ideais recomendados:</strong> ${processadoresIdeal.size ? Array.from(processadoresIdeal).join(', ') : 'Qualquer'}</p>
+    `;
+  }
+</script>
+
 </body>
 </html>

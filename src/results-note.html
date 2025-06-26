@@ -1,154 +1,144 @@
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>SmartMatch - Escolher Notebook</title>
-        <link rel="stylesheet" href="/Css/results-note.css" />
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartMatch - Escolher Notebook</title>
+  <link rel="stylesheet" href="/Css/results-note.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
 
-        <!-- Aqui vai carregar o header externo -->
-        <div id="header-placeholder"></div>
+  <main class="main-container">
+    <div class="floating-elements">
+      <div class="floating-shape"></div>
+      <div class="floating-shape"></div>
+      <div class="floating-shape"></div>
+    </div>
 
-        <main class="main-container">
-            <div class="floating-elements">
-                <div class="floating-shape"></div>
-                <div class="floating-shape"></div>
-                <div class="floating-shape"></div>
-            </div>
+    <div class="form-container">
+      <div class="form-header fade-in">
+        <div class="device-icon">💻</div>
+        <h1 class="form-title">ESCOLHER NOTEBOOK</h1>
+        <p class="form-subtitle">Marque os aplicativos e preferências que você mais usa</p>
+      </div>
 
-            <div class="form-container">
-                <div class="form-header fade-in">
-                    <div class="device-icon">💻</div>
-                    <h1 class="form-title">ESCOLHER NOTEBOOK</h1>
-                    <p class="form-subtitle">Selecione seu perfil de uso para receber recomendações personalizadas</p>
-                </div>
+      <form id="form-notebook" class="fade-in">
+        <fieldset>
+          <legend>IDE e Desenvolvimento</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="vscode" /><span></span> VSCode</label>
+            <label><input type="checkbox" value="pycharm" /><span></span> PyCharm</label>
+            <label><input type="checkbox" value="androidstudio" /><span></span> Android Studio</label>
+            <label><input type="checkbox" value="netbeans" /><span></span> NetBeans</label>
+            <label><input type="checkbox" value="eclipse" /><span></span> Eclipse</label>
+            <label><input type="checkbox" value="xampp" /><span></span> XAMPP / MySQL</label>
+            
+          </div>
+        </fieldset>
 
-                <div class="usage-options">
-                    <div class="usage-card fade-in" data-usage="basico">
-                        <div class="usage-icon">📝</div>
-                        <h3 class="usage-title">USO BÁSICO</h3>
-                        <p class="usage-description">
-                            Perfeito pra quem faz atividades simples no dia a dia, como navegação, estudos e documentos.
-                        </p>
-                        <ul class="usage-features">
-                            <li>Internet e redes sociais</li>
-                            <li>Pacote Office (Word, Excel...)</li>
-                            <li>Assistir aulas e vídeos</li>
-                            <li>E-mails e tarefas simples</li>
-                            <li>Boa bateria</li>
-                        </ul>
-                    </div>
+        <fieldset>
+          <legend>Softwares Profissionais</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="photoshop" /><span></span> Adobe Photoshop</label>
+            <label><input type="checkbox" value="illustrator" /><span></span> Adobe Illustrator</label>
+            <label><input type="checkbox" value="after" /><span></span> After Effects</label>
+            <label><input type="checkbox" value="premiere" /><span></span> Adobe Premiere</label>
+            <label><input type="checkbox" value="autocad" /><span></span> AutoCAD</label>
+            <label><input type="checkbox" value="blender" /><span></span> Blender</label>
+            <label><input type="checkbox" value="figma" /><span></span> Figma</label>
+            <label><input type="checkbox" value="canva" /><span></span> Canva</label>
+            <label><input type="checkbox" value="notion" /><span></span> Notion</label>
+            <label><input type="checkbox" value="obs" /><span></span> OBS Studio</label>
+            <label><input type="checkbox" value="capcut" /><span></span> CapCut</label>
+            <label><input type="checkbox" value="davinci" /><span></span> DaVinci Resolve</label>
+          </div>
+        </fieldset>
 
-                    <div class="usage-card fade-in" data-usage="intermediario">
-                        <div class="usage-icon">🔥</div>
-                        <h3 class="usage-title">USO INTERMEDIÁRIO</h3>
-                        <p class="usage-description">
-                            Ideal pra quem faz multitarefas, edição leve, programação ou trabalho remoto.
-                        </p>
-                        <ul class="usage-features">
-                            <li>Programação básica e estudos</li>
-                            <li>Edição de fotos leve (Photoshop)</li>
-                            <li>Reuniões e home office</li>
-                            <li>Multitarefas com vários apps abertos</li>
-                            <li>Jogos leveis</li>
-                        </ul>
-                    </div>
+        <fieldset>
+          <legend>Comunicação e Navegação</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="chrome" /><span></span> Google Chrome</label>
+            <label><input type="checkbox" value="teams" /><span></span> Microsoft Teams</label>
+            <label><input type="checkbox" value="zoom" /><span></span> Zoom</label>
+            <label><input type="checkbox" value="outlook" /><span></span> Outlook / Webmail</label>
+            <label><input type="checkbox" value="discord" /><span></span> Discord</label>
+            <label><input type="checkbox" value="whatsapp" /><span></span> WhatsApp</label>
+          </div>
+        </fieldset>
 
-                    <div class="usage-card fade-in" data-usage="avancado">
-                        <div class="usage-icon">🚀</div>
-                        <h3 class="usage-title">USO AVANÇADO</h3>
-                        <p class="usage-description">
-                            Pra quem exige alto desempenho: games, edição pesada, modelagem 3D ou softwares profissionais.
-                        </p>
-                        <ul class="usage-features">
-                            <li>Jogos pesados e gráficos altos </li>
-                            <li>Modelagem 3D, AutoCAD, Blender</li>
-                            <li>Edição de vídeos (Premiere, After)</li>
-                            <li>Desenvolvimento avançado</li>
-                            <li>Alta performance e hardware potente</li>
-                        </ul>
-                    </div>
-                </div>
+        <fieldset>
+          <legend>Jogos Específicos</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="lol" /><span></span> League of Legends</label>
+            <label><input type="checkbox" value="valorant" /><span></span> Valorant</label>
+            <label><input type="checkbox" value="csgo" /><span></span> CS:GO / CS2</label>
+            <label><input type="checkbox" value="fortnite" /><span></span> Fortnite</label>
+            <label><input type="checkbox" value="minecraft" /><span></span> Minecraft</label>
+            <label><input type="checkbox" value="roblox" /><span></span> Roblox</label>
+            <label><input type="checkbox" value="theSims" /><span></span> The Sims 4</label>
+            <label><input type="checkbox" value="fifa" /><span></span> FIFA / EA FC</label>
+            <label><input type="checkbox" value="gta" /><span></span> GTA V / RP</label>
+            <label><input type="checkbox" value="genshin" /><span></span> Genshin Impact</label>
+          </div>
+        </fieldset>
 
-                <div class="continue-section">
-                    <button class="continue-btn" onclick="continueToSpecs()">
-                        Continuar para Especificações →
-                    </button>
-                </div>
-            </div>
-        </main>
+        <fieldset>
+          <legend>Preferências</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="bateria" /><span></span> Bateria Duradoura</label>
+            <label><input type="checkbox" value="leve" /><span></span> Leve e Portátil</label>
+            <label><input type="checkbox" value="desempenho" /><span></span> Alto Desempenho</label>
+            <label><input type="checkbox" value="silencioso" /><span></span> Silencioso</label>
+            <label><input type="checkbox" value="tela" /><span></span> Tela grande (15"+)</label>
+            <label><input type="checkbox" value="ssd" /><span></span> SSD rápido</label>
+            <label><input type="checkbox" value="teclado" /><span></span> Teclado retroiluminado</label>
+            <label><input type="checkbox" value="cooler" /><span></span> Boa refrigeração</label>
+            <label><input type="checkbox" value="upgrades" /><span></span> Suporte a upgrades</label>
+          </div>
+        </fieldset>
 
-        <footer class="footer">
-            <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
-            <span>© 2025 SmartMach - Todos os direitos reservados</span>
-        </footer>
+        <div class="continue-section show">
+          <button class="continue-btn" type="button" onclick="gerarRecomendacaoNotebook()">Ver Recomendação →</button>
+        </div>
+      </form>
 
-        <script>
-            // Carregar o header externo
-            fetch('header.html')
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                });
+      <div id="resultado" class="fade-in"></div>
+    </div>
+  </main>
 
-            let selectedUsage = null;
+  <footer class="footer">
+    <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+    <span>© 2025 SmartMach - Todos os direitos reservados</span>
+  </footer>
 
-            // Observer para animações
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, observerOptions);
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
 
-            // Seleção dos cards
-            document.querySelectorAll('.usage-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    document.querySelectorAll('.usage-card').forEach(c => c.classList.remove('selected'));
-                    card.classList.add('selected');
-                    selectedUsage = card.dataset.usage;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-                    // Mostrar botão continuar
-                    document.querySelector('.continue-section').classList.add('show');
-                });
-            });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-            // Função continuar
-            function continueToSpecs() {
-                if (selectedUsage) {
-                    alert(`Você selecionou: ${selectedUsage.toUpperCase()}\nRedirecionando para as especificações recomendadas...`);
-                    // Aqui tu bota o redirecionamento real
-                    // window.location.href = `especificacoes-${selectedUsage}.html`;
-                }
-            }
-
-            // Efeito scroll no header
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('.header');
-                if (window.scrollY > 50) {
-                    header.style.background = 'rgba(15, 23, 42, 0.98)';
-                    header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-                } else {
-                    header.style.background = 'rgba(15, 23, 42, 0.95)';
-                    header.style.boxShadow = 'none';
-                }
-            });
-
-            // Scroll suave
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', e => {
-                    e.preventDefault();
-                    const target = document.querySelector(anchor.getAttribute('href'));
-                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            });
-
-            // Delay nas animações dos cards
-            const usageCards = document.querySelectorAll('.usage-card');
-            usageCards.forEach((card, i) => card.style.animationDelay = `${i * 0.2}s`);
-        </script>
-    </body>
-    </html>
+    function gerarRecomendacaoNotebook() {
+      const form = document.getElementById('form-notebook');
+      const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+      if (checkboxes.length === 0) {
+        alert("Escolha pelo menos uma opção, cabra!");
+        return;
+      }
+      const selecionados = Array.from(checkboxes).map(cb => cb.value);
+      document.getElementById('resultado').textContent = `Você escolheu: ${selecionados.join(', ')}`;
+    }
+  </script>
+</body>
+</html>
