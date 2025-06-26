@@ -1,149 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SmartMatch - Escolher Celular</title>
-    <link rel="stylesheet" href="/Css/results-cell.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartMatch - Perfil de Uso</title>
+  <link rel="stylesheet" href="/Css/results-cell.css" />
 </head>
 <body>
-
-    <!-- Aqui vai carregar o header externo -->
     <div id="header-placeholder"></div>
 
-    <main class="main-container">
-        <div class="floating-elements">
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
+  <main class="main-container">
+    <div class="floating-elements">
+      <div class="floating-shape"></div>
+      <div class="floating-shape"></div>
+      <div class="floating-shape"></div>
+    </div>
+
+    <div class="form-container">
+      <div class="form-header fade-in">
+        <div class="device-icon">📱</div>
+        <h1 class="form-title">ESCOLHER CELULAR</h1>
+        <p class="form-subtitle">Marque os apps e recursos que você realmente usa</p>
+      </div>
+
+      <form id="form-uso" class="fade-in">
+        <fieldset>
+          <legend>Apps de Banco</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="nubank" /><span></span> Nubank</label>
+            <label><input type="checkbox" value="caixa" /><span></span> Caixa</label>
+            <label><input type="checkbox" value="bb" /><span></span> Banco do Brasil</label>
+            <label><input type="checkbox" value="itau" /><span></span> Itaú</label>
+            <label><input type="checkbox" value="inter" /><span></span> Inter</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Redes Sociais</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="whatsapp" /><span></span> WhatsApp</label>
+            <label><input type="checkbox" value="instagram" /><span></span> Instagram</label>
+            <label><input type="checkbox" value="facebook" /><span></span> Facebook</label>
+            <label><input type="checkbox" value="telegram" /><span></span> Telegram</label>
+            <label><input type="checkbox" value="twitter" /><span></span> Twitter</label>
+            <label><input type="checkbox" value="tiktok" /><span></span> TikTok</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Jogos</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="freefire" /><span></span> Free Fire</label>
+            <label><input type="checkbox" value="cod" /><span></span> COD Mobile</label>
+            <label><input type="checkbox" value="genshin" /><span></span> Genshin Impact</label>
+            <label><input type="checkbox" value="roblox" /><span></span> Roblox</label>
+            <label><input type="checkbox" value="clashroyale" /><span></span> Clash Royale</label>
+            <label><input type="checkbox" value="minecraft" /><span></span> Minecraft</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Streaming</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="youtube" /><span></span> YouTube</label>
+            <label><input type="checkbox" value="netflix" /><span></span> Netflix</label>
+            <label><input type="checkbox" value="spotify" /><span></span> Spotify</label>
+            <label><input type="checkbox" value="prime" /><span></span> Prime Video</label>
+            <label><input type="checkbox" value="globoplay" /><span></span> Globoplay</label>
+            <label><input type="checkbox" value="disneyplus" /><span></span> Disney+</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Uso da Câmera</legend>
+          <div class="radio-grid">
+            <label><input type="radio" name="camera" value="nenhum" checked /><span></span> Não uso</label>
+            <label><input type="radio" name="camera" value="pouco" /><span></span> Pouco</label>
+            <label><input type="radio" name="camera" value="muito" /><span></span> Muito</label>
+            <label><input type="radio" name="camera" value="profissional" /><span></span> Profissional</label>
+          </div>
+        </fieldset>
+
+        <div class="continue-section show">
+          <button class="continue-btn" type="button" onclick="gerarRecomendacao()">Ver Recomendação →</button>
         </div>
+      </form>
 
-        <div class="form-container">
-            <div class="form-header fade-in">
-                <div class="phone-icon">📱</div>
-                <h1 class="form-title">ESCOLHER CELULAR</h1>
-                <p class="form-subtitle">Selecione seu perfil de uso para receber recomendações personalizadas</p>
-            </div>
+      <div id="resultado" class="fade-in"></div>
+    </div>
+  </main>
 
-            <div class="usage-options">
-                <div class="usage-card fade-in" data-usage="basico">
-                    <div class="usage-icon">🌟</div>
-                    <h3 class="usage-title">USO BÁSICO</h3>
-                    <p class="usage-description">
-                        Para atividades simples do dia a dia como ligações, mensagens e navegação básica.
-                    </p>
-                    <ul class="usage-features">
-                        <li>WhatsApp e redes sociais</li>
-                        <li>Fotos casuais</li>
-                        <li>Navegação na internet</li>
-                        <li>Aplicativos básicos</li>
-                        <li>Bateria duradoura</li>
-                        <li>Streaming de vídeos</li>
-                    </ul>
-                </div>
+  <footer class="footer">
+    <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+    <span>© 2025 SmartMach - Todos os direitos reservados</span>
+  </footer>
 
-                <div class="usage-card fade-in" data-usage="intermediario">
-                    <div class="usage-icon">⚡</div>
-                    <h3 class="usage-title">USO INTERMEDIÁRIO</h3>
-                    <p class="usage-description">
-                        Para quem usa o celular com mais frequência, incluindo jogos leves e multitarefas.
-                    </p>
-                    <ul class="usage-features">
-                        <li>Jogos casuais e médios</li>
-                        <li>Fotos e vídeos de qualidade</li>
-                        <li>Streaming de vídeos</li>
-                        <li>Múltiplos apps abertos</li>
-                        <li>Performance equilibrada</li>
-                    </ul>
-                </div>
-
-                <div class="usage-card fade-in" data-usage="avancado">
-                    <div class="usage-icon">🚀</div>
-                    <h3 class="usage-title">USO AVANÇADO</h3>
-                    <p class="usage-description">
-                        Para usuários que demandam máxima performance em jogos pesados e aplicações profissionais.
-                    </p>
-                    <ul class="usage-features">
-                        <li>Jogos pesados e gráficos intensos</li>
-                        <li>Edição de fotos e vídeos</li>
-                        <li>Gravação 4K</li>
-                        <li>Aplicações profissionais</li>
-                        <li>Performance máxima</li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
-        <span>© 2025 SmartMach - Todos os direitos reservados</span>
-    </footer>
-
-    <script>
-        // Carregar o header externo no div
-        fetch('header.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        let selectedUsage = null;
-
-        // Observer pra animação das classes fade-in
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, observerOptions);
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Selecionar perfil de uso
-        document.querySelectorAll('.usage-card').forEach(card => {
-            card.addEventListener('click', () => {
-                document.querySelectorAll('.usage-card').forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                selectedUsage = card.dataset.usage;
-
-                // Mostrar botão continuar
-                document.querySelector('.continue-section').classList.add('show');
-            });
-        });
-
-        // Função continuar
-        function continueToSpecs() {
-            if (selectedUsage) {
-                alert(`Você selecionou: ${selectedUsage.toUpperCase()}\nRedirecionando para as especificações recomendadas...`);
-                // Simulação de redirecionamento, troca essa linha por window.location.href
-            }
-        }
-
-        // Efeito scroll no header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(15, 23, 42, 0.98)';
-                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-            } else {
-                header.style.background = 'rgba(15, 23, 42, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Scroll suave nos links do menu
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Delay de animação nos cards
-        const usageCards = document.querySelectorAll('.usage-card');
-        usageCards.forEach((card, i) => card.style.animationDelay = `${i * 0.2}s`);
-    </script>
+  <script>
+    // Carregar header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+  
+    // Ativar animação fade-in visível
+    window.onload = () => {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    };
+  
+    
+  </script>
+  
 </body>
 </html>
