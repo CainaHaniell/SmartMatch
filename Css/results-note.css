@@ -157,22 +157,42 @@ label span {
 }
 
 .continue-btn {
-  background: linear-gradient(45deg, #3b82f6, #06b6d4);
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(6, 182, 212, 0.6);
-  position: relative;
-  overflow: hidden;
+  display: block;
+      text-align: center;
+      margin-top: 30px;
+      font-weight: 600;
+      color: #06b6d4;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
 }
 
 .continue-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.6);
+  color: #3b82f6;
 }
+/* Remove estilo checkbox para inputs radio, deixa padrão do navegador */
+input[type="radio"] {
+  -webkit-appearance: radio; /* Safari e Chrome */
+  -moz-appearance: radio; /* Firefox */
+  appearance: radio;
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+  position: relative;
+  top: 2px;
+}
+
+/* Remove o span estilizado que tu usa pra checkbox, só pra radio */
+input[type="radio"] + span {
+  display: none; /* esconde o span que estiliza checkbox, pq radio não precisa */
+}
+
+/* Se quiser estilizar o texto ao lado, estiliza o label normal */
+label {
+  cursor: pointer;
+  user-select: none;
+}
+
 
 #resultado {
   margin-top: 25px;

@@ -1,144 +1,472 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SmartMatch - Escolher Notebook</title>
-  <link rel="stylesheet" href="/Css/results-note.css">
-</head>
-<body>
-  <div id="header-placeholder"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SmartMatch - Escolher Notebook</title>
+    <link rel="stylesheet" href="/Css/results-note.css" />
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
 
-  <main class="main-container">
-    <div class="floating-elements">
-      <div class="floating-shape"></div>
-      <div class="floating-shape"></div>
-      <div class="floating-shape"></div>
-    </div>
-
-    <div class="form-container">
-      <div class="form-header fade-in">
-        <div class="device-icon">💻</div>
-        <h1 class="form-title">ESCOLHER NOTEBOOK</h1>
-        <p class="form-subtitle">Marque os aplicativos e preferências que você mais usa</p>
+    <main class="main-container">
+      <div class="floating-elements">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
       </div>
 
-      <form id="form-notebook" class="fade-in">
-        <fieldset>
-          <legend>IDE e Desenvolvimento</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="vscode" /><span></span> VSCode</label>
-            <label><input type="checkbox" value="pycharm" /><span></span> PyCharm</label>
-            <label><input type="checkbox" value="androidstudio" /><span></span> Android Studio</label>
-            <label><input type="checkbox" value="netbeans" /><span></span> NetBeans</label>
-            <label><input type="checkbox" value="eclipse" /><span></span> Eclipse</label>
-            <label><input type="checkbox" value="xampp" /><span></span> XAMPP / MySQL</label>
-            
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Softwares Profissionais</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="photoshop" /><span></span> Adobe Photoshop</label>
-            <label><input type="checkbox" value="illustrator" /><span></span> Adobe Illustrator</label>
-            <label><input type="checkbox" value="after" /><span></span> After Effects</label>
-            <label><input type="checkbox" value="premiere" /><span></span> Adobe Premiere</label>
-            <label><input type="checkbox" value="autocad" /><span></span> AutoCAD</label>
-            <label><input type="checkbox" value="blender" /><span></span> Blender</label>
-            <label><input type="checkbox" value="figma" /><span></span> Figma</label>
-            <label><input type="checkbox" value="canva" /><span></span> Canva</label>
-            <label><input type="checkbox" value="notion" /><span></span> Notion</label>
-            <label><input type="checkbox" value="obs" /><span></span> OBS Studio</label>
-            <label><input type="checkbox" value="capcut" /><span></span> CapCut</label>
-            <label><input type="checkbox" value="davinci" /><span></span> DaVinci Resolve</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Comunicação e Navegação</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="chrome" /><span></span> Google Chrome</label>
-            <label><input type="checkbox" value="teams" /><span></span> Microsoft Teams</label>
-            <label><input type="checkbox" value="zoom" /><span></span> Zoom</label>
-            <label><input type="checkbox" value="outlook" /><span></span> Outlook / Webmail</label>
-            <label><input type="checkbox" value="discord" /><span></span> Discord</label>
-            <label><input type="checkbox" value="whatsapp" /><span></span> WhatsApp</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Jogos Específicos</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="lol" /><span></span> League of Legends</label>
-            <label><input type="checkbox" value="valorant" /><span></span> Valorant</label>
-            <label><input type="checkbox" value="csgo" /><span></span> CS:GO / CS2</label>
-            <label><input type="checkbox" value="fortnite" /><span></span> Fortnite</label>
-            <label><input type="checkbox" value="minecraft" /><span></span> Minecraft</label>
-            <label><input type="checkbox" value="roblox" /><span></span> Roblox</label>
-            <label><input type="checkbox" value="theSims" /><span></span> The Sims 4</label>
-            <label><input type="checkbox" value="fifa" /><span></span> FIFA / EA FC</label>
-            <label><input type="checkbox" value="gta" /><span></span> GTA V / RP</label>
-            <label><input type="checkbox" value="genshin" /><span></span> Genshin Impact</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Preferências</legend>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" value="bateria" /><span></span> Bateria Duradoura</label>
-            <label><input type="checkbox" value="leve" /><span></span> Leve e Portátil</label>
-            <label><input type="checkbox" value="desempenho" /><span></span> Alto Desempenho</label>
-            <label><input type="checkbox" value="silencioso" /><span></span> Silencioso</label>
-            <label><input type="checkbox" value="tela" /><span></span> Tela grande (15"+)</label>
-            <label><input type="checkbox" value="ssd" /><span></span> SSD rápido</label>
-            <label><input type="checkbox" value="teclado" /><span></span> Teclado retroiluminado</label>
-            <label><input type="checkbox" value="cooler" /><span></span> Boa refrigeração</label>
-            <label><input type="checkbox" value="upgrades" /><span></span> Suporte a upgrades</label>
-          </div>
-        </fieldset>
-
-        <div class="continue-section show">
-          <button class="continue-btn" type="button" onclick="gerarRecomendacaoNotebook()">Ver Recomendação →</button>
+      <div class="form-container">
+        <div class="form-header fade-in">
+          <div class="device-icon">💻</div>
+          <h1 class="form-title">ESCOLHER NOTEBOOK</h1>
+          <p class="form-subtitle">
+            Marque os aplicativos e preferências que você mais usa
+          </p>
         </div>
-      </form>
 
-      <div id="resultado" class="fade-in"></div>
-    </div>
-  </main>
+        <form id="form-notebook" class="fade-in">
+          <fieldset>
+            <legend>IDE e Desenvolvimento</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="checkbox" value="vscode" /><span></span>
+                VSCode</label
+              >
+              <label
+                ><input type="checkbox" value="pycharm" /><span></span>
+                PyCharm</label
+              >
+              <label
+                ><input type="checkbox" value="androidstudio" /><span></span>
+                Android Studio</label
+              >
+              <label
+                ><input type="checkbox" value="netbeans" /><span></span>
+                NetBeans</label
+              >
+              <label
+                ><input type="checkbox" value="eclipse" /><span></span>
+                Eclipse</label
+              >
+              <label
+                ><input type="checkbox" value="xampp" /><span></span> XAMPP /
+                MySQL</label
+              >
+            </div>
+          </fieldset>
 
-  <footer class="footer">
-    <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
-    <span>© 2025 SmartMach - Todos os direitos reservados</span>
-  </footer>
+          <fieldset>
+            <legend>Softwares Profissionais</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="checkbox" value="photoshop" /><span></span> Adobe
+                Photoshop</label
+              >
+              <label
+                ><input type="checkbox" value="illustrator" /><span></span>
+                Adobe Illustrator</label
+              >
+              <label
+                ><input type="checkbox" value="after" /><span></span> After
+                Effects</label
+              >
+              <label
+                ><input type="checkbox" value="premiere" /><span></span> Adobe
+                Premiere</label
+              >
+              <label
+                ><input type="checkbox" value="autocad" /><span></span>
+                AutoCAD</label
+              >
+              <label
+                ><input type="checkbox" value="blender" /><span></span>
+                Blender</label
+              >
+              <label
+                ><input type="checkbox" value="figma" /><span></span>
+                Figma</label
+              >
+              <label
+                ><input type="checkbox" value="canva" /><span></span>
+                Canva</label
+              >
+              <label
+                ><input type="checkbox" value="notion" /><span></span>
+                Notion</label
+              >
+              <label
+                ><input type="checkbox" value="obs" /><span></span> OBS
+                Studio</label
+              >
+              <label
+                ><input type="checkbox" value="capcut" /><span></span>
+                CapCut</label
+              >
+              <label
+                ><input type="checkbox" value="davinci" /><span></span> DaVinci
+                Resolve</label
+              >
+            </div>
+          </fieldset>
 
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
+          <fieldset>
+            <legend>Comunicação e Navegação</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="checkbox" value="chrome" /><span></span> Google
+                Chrome</label
+              >
+              <label
+                ><input type="checkbox" value="firefox" /><span></span>
+                Firefox</label
+              >
+              <label
+                ><input type="checkbox" value="edge" /><span></span> Microsoft
+                Edge</label
+              >
+              <label
+                ><input type="checkbox" value="opera" /><span></span>
+                Opera</label
+              >
+              <label
+                ><input type="checkbox" value="teams" /><span></span> Microsoft
+                Teams</label
+              >
+              <label
+                ><input type="checkbox" value="zoom" /><span></span> Zoom</label
+              >
+              <label
+                ><input type="checkbox" value="outlook" /><span></span> Outlook
+                / Webmail</label
+              >
+              <label
+                ><input type="checkbox" value="discord" /><span></span>
+                Discord</label
+              >
+              <label
+                ><input type="checkbox" value="whatsapp" /><span></span>
+                WhatsApp</label
+              >
+            </div>
+          </fieldset>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          <fieldset>
+            <legend>Jogos Específicos</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="checkbox" value="lol" /><span></span> League of
+                Legends</label
+              >
+              <label
+                ><input type="checkbox" value="valorant" /><span></span>
+                Valorant</label
+              >
+              <label
+                ><input type="checkbox" value="csgo" /><span></span> CS:GO /
+                CS2</label
+              >
+              <label
+                ><input type="checkbox" value="fortnite" /><span></span>
+                Fortnite</label
+              >
+              <label
+                ><input type="checkbox" value="minecraft" /><span></span>
+                Minecraft</label
+              >
+              <label
+                ><input type="checkbox" value="roblox" /><span></span>
+                Roblox</label
+              >
+              <label
+                ><input type="checkbox" value="theSims" /><span></span> The Sims
+                4</label
+              >
+              <label
+                ><input type="checkbox" value="fifa" /><span></span> FIFA / EA
+                FC</label
+              >
+              <label
+                ><input type="checkbox" value="gta" /><span></span> GTA V /
+                RP</label
+              >
+              <label
+                ><input type="checkbox" value="genshin" /><span></span> Genshin
+                Impact</label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Placa de Vídeo (Escolha uma)</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="radio" name="gpu" value="integrada" />
+                Integrada</label
+              >
+              <label
+                ><input type="radio" name="gpu" value="gtx1650" /> GTX
+                1650</label
+              >
+              <label
+                ><input type="radio" name="gpu" value="rtx3050" /> RTX
+                3050</label
+              >
+              <label
+                ><input type="radio" name="gpu" value="rtx4060" /> RTX
+                4060</label
+              >
+              <label
+                ><input type="radio" name="gpu" value="rtx4070" /> RTX
+                4070</label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Armazenamento</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="radio" name="storageType" value="ssd" />
+                SSD</label
+              >
+              <label
+                ><input type="radio" name="storageType" value="hd" /> HD</label
+              >
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Preferências</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="checkbox" value="bateria" /><span></span> Bateria
+                Duradoura</label
+              >
+              <label
+                ><input type="radio" name="tipoTela" value="IPS" /><span></span>
+                Tela IPS</label
+              >
+              <label
+                ><input type="radio" name="tipoTela" value="TN" /><span></span>
+                Tela TN</label
+              >
+              <label
+                ><input type="checkbox" value="telaGrande" /><span></span> Tela
+                grande (15"+)</label
+              >
+              <label
+                ><input type="checkbox" value="upgrades" /><span></span> Suporte
+                a upgrades</label
+              >
+              <label
+                ><input type="checkbox" value="teclado" /><span></span> Teclado
+                retroiluminado</label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Sistema Operacional</legend>
+            <div class="checkbox-grid">
+              <label
+                ><input type="radio" value="windows" /><span></span>
+                Windows</label
+              >
+              <label
+                ><input type="radio" value="linux" /><span></span>
+                Linux</label
+              >
+              <label
+                ><input type="radio" value="macos" /><span></span>
+                macOS</label
+              >
+            </div>
+          </fieldset>
+
+          <div class="continue-section show">
+            <a
+              href="/src/resultado-note.html"
+              id="continue-link"
+              class="continue-btn"
+              >Ver Recomendação →</a
+            >
+          </div>
+        </form>
+
+        <div id="resultado" class="fade-in"></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>
+        "Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos
+        37:5
+      </p>
+      <span>© 2025 SmartMach - Todos os direitos reservados</span>
+    </footer>
+
+    <script>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("form-notebook");
+        const continueLink = document.getElementById("continue-link");
+
+        // Marcar checkboxes/ radios salvos
+        const savedApps = JSON.parse(
+          localStorage.getItem("appsNotebook") || "[]"
+        );
+        const savedPrefs = JSON.parse(
+          localStorage.getItem("preferenciasNotebook") || "[]"
+        );
+        const savedGPU = localStorage.getItem("gpuNotebook");
+        const savedStorageType = localStorage.getItem("storageTypeNotebook");
+
+        // Marca os apps
+        if (savedApps.length) {
+          savedApps.forEach((value) => {
+            const checkbox = form.querySelector(
+              `input[type="checkbox"][value="${value}"]`
+            );
+            if (checkbox) checkbox.checked = true;
+          });
         }
+
+        // Marca as preferências
+        if (savedPrefs.length) {
+          savedPrefs.forEach((value) => {
+            const checkbox = form.querySelector(
+              `input[type="checkbox"][value="${value}"]`
+            );
+            if (checkbox) checkbox.checked = true;
+          });
+        }
+
+        // Marca GPU
+        if (savedGPU) {
+          const gpuRadio = form.querySelector(
+            `input[type="radio"][name="gpu"][value="${savedGPU}"]`
+          );
+          if (gpuRadio) gpuRadio.checked = true;
+        }
+        // Marca Storage type
+        if (savedStorageType) {
+          const storageRadio = form.querySelector(
+            `input[type="radio"][name="storageType"][value="${savedStorageType}"]`
+          );
+          if (storageRadio) storageRadio.checked = true;
+        }
+
+        continueLink.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const checkedBoxes = form.querySelectorAll(
+            'input[type="checkbox"]:checked'
+          );
+          const gpuRadio = form.querySelector(
+            'input[type="radio"][name="gpu"]:checked'
+          );
+          const storageRadio = form.querySelector(
+            'input[type="radio"][name="storageType"]:checked'
+          );
+
+          if (checkedBoxes.length === 0) {
+            alert("Escolha pelo menos uma opção, cabra!");
+            return;
+          }
+          if (!gpuRadio) {
+            alert("Escolha uma placa de vídeo, visse?");
+            return;
+          }
+          if (!storageRadio) {
+            alert("Escolha o tipo de armazenamento, mermão!");
+            return;
+          }
+
+          // Separar apps das preferencias
+          const selecionados = [];
+          const preferencias = [];
+
+          checkedBoxes.forEach((cb) => {
+            const val = cb.value;
+            const appsValidos = [
+              "vscode",
+              "pycharm",
+              "androidstudio",
+              "netbeans",
+              "eclipse",
+              "xampp",
+              "photoshop",
+              "illustrator",
+              "after",
+              "premiere",
+              "autocad",
+              "blender",
+              "figma",
+              "canva",
+              "notion",
+              "obs",
+              "capcut",
+              "davinci",
+              "chrome",
+              "firefox",
+              "edge",
+              "opera",
+              "teams",
+              "zoom",
+              "outlook",
+              "discord",
+              "whatsapp",
+              "lol",
+              "valorant",
+              "csgo",
+              "fortnite",
+              "minecraft",
+              "roblox",
+              "theSims",
+              "fifa",
+              "gta",
+              "genshin",
+            ];
+
+            if (appsValidos.includes(val)) {
+              selecionados.push(val);
+            } else {
+              preferencias.push(val);
+            }
+          });
+
+          // Salva no localStorage
+          localStorage.setItem("appsNotebook", JSON.stringify(selecionados));
+          localStorage.setItem(
+            "preferenciasNotebook",
+            JSON.stringify(preferencias)
+          );
+          localStorage.setItem("gpuNotebook", gpuRadio.value);
+          localStorage.setItem("storageTypeNotebook", storageRadio.value);
+
+          // Vai pra próxima página
+          window.location.href = "/src/resultado-note.html";
+        });
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    function gerarRecomendacaoNotebook() {
-      const form = document.getElementById('form-notebook');
-      const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
-      if (checkboxes.length === 0) {
-        alert("Escolha pelo menos uma opção, cabra!");
-        return;
-      }
-      const selecionados = Array.from(checkboxes).map(cb => cb.value);
-      document.getElementById('resultado').textContent = `Você escolheu: ${selecionados.join(', ')}`;
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>

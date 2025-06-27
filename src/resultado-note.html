@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartMatch - Resultado Notebook</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .result-container {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 30px 40px;
+      border-radius: 30px;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      background: linear-gradient(45deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .result-box {
+      background: rgba(6, 40, 212, 0.1);
+      border: 2px solid #06b6d4;
+      padding: 20px 30px;
+      border-radius: 15px;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin: 10px;
+    }
+    .result-box strong {
+      color: #06b6d4;
+    }
+    hr {
+      border: 0;
+      border-top: 1.5px solid #06b6d4;
+      margin: 20px 0;
+      opacity: 0.3;
+    }
+    .btn-voltar {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      font-weight: 600;
+      color: #06b6d4;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .btn-voltar:hover {
+      color: #3b82f6;
+    }
+    @media (max-width: 600px) {
+      .result-container {
+        padding: 20px 25px;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .result-box {
+        font-size: 1rem;
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="result-container">
+      <h1>💻 Recomendação de Especificações para Notebook</h1>
+      <div id="resultado"></div>
+      <a href="/src/results-note.html" class="btn-voltar">← Voltar e editar seleção</a>
+    </div>
+  </main>
+
+  <script>
+    // Dados das especificações por app
+    const appsSpecsNote = {
+      vscode: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      pycharm: { ram: 4, armazenamento: 1, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      androidstudio: { ram: 8, armazenamento: 4, cpu: "i5 8ª Gen", cpuIdeal: "i7 11ª Gen" },
+      netbeans: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      eclipse: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      xampp: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      photoshop: { ram: 8, armazenamento: 3, cpu: "i5 8ª Gen", cpuIdeal: "i7 10ª Gen" },
+      illustrator: { ram: 8, armazenamento: 3, cpu: "i5 8ª Gen", cpuIdeal: "i7 10ª Gen" },
+      after: { ram: 16, armazenamento: 6, cpu: "i7 9ª Gen", cpuIdeal: "i9 12ª Gen" },
+      premiere: { ram: 16, armazenamento: 6, cpu: "i7 9ª Gen", cpuIdeal: "i9 12ª Gen" },
+      autocad: { ram: 8, armazenamento: 4, cpu: "i5 9ª Gen", cpuIdeal: "i7 11ª Gen" },
+      blender: { ram: 16, armazenamento: 6, cpu: "i7 9ª Gen", cpuIdeal: "i9 12ª Gen" },
+      figma: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      canva: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      notion: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      obs: { ram: 8, armazenamento: 4, cpu: "i5 8ª Gen", cpuIdeal: "i7 10ª Gen" },
+      capcut: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      davinci: { ram: 16, armazenamento: 6, cpu: "i7 10ª Gen", cpuIdeal: "i9 13ª Gen" },
+      chrome: { ram: 4, armazenamento: 2, cpu: "i5 7ª Gen", cpuIdeal: "i7 9ª Gen" },
+      firefox: { ram: 3, armazenamento: 1, cpu: "i3 6ª Gen", cpuIdeal: "i5 8ª Gen" },
+      edge: { ram: 3, armazenamento: 1, cpu: "i3 6ª Gen", cpuIdeal: "i5 8ª Gen" },
+      opera: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      teams: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      zoom: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      outlook: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      discord: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      whatsapp: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+      lol: { ram: 8, armazenamento: 20, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+      valorant: { ram: 8, armazenamento: 25, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+      csgo: { ram: 8, armazenamento: 20, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+      fortnite: { ram: 8, armazenamento: 25, cpu: "i5 10ª Gen", cpuIdeal: "i7 13ª Gen" },
+      minecraft: { ram: 6, armazenamento: 15, cpu: "i5 9ª Gen", cpuIdeal: "i7 11ª Gen" },
+      roblox: { ram: 4, armazenamento: 5, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+      theSims: { ram: 8, armazenamento: 20, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+      fifa: { ram: 8, armazenamento: 30, cpu: "i5 10ª Gen", cpuIdeal: "i7 13ª Gen" },
+      gta: { ram: 8, armazenamento: 30, cpu: "i5 10ª Gen", cpuIdeal: "i7 13ª Gen" },
+      genshin: { ram: 16, armazenamento: 40, cpu: "i7 11ª Gen", cpuIdeal: "i9 13ª Gen" },
+    };
+
+    const jogosPesados = ['lol', 'valorant', 'fortnite', 'gta', 'genshin', 'csgo', 'theSims', 'fifa'];
+
+    function arredondar(valor, tipo) {
+      if (tipo === 'ram') {
+        if (valor <= 4) return 4;
+        if (valor <= 8) return 8;
+        if (valor <= 16) return 16;
+        return 32;
+      } else {
+        if (valor <= 128) return 128;
+        if (valor <= 256) return 256;
+        if (valor <= 512) return 512;
+        return 1024;
+      }
+    }
+
+    function escolherCPU(cpus) {
+      const pesosGen = {
+        "i3": 1,
+        "i5": 2,
+        "i7": 3,
+        "i9": 4
+      };
+      function parseCPU(cpu) {
+        const regex = /(i\d)\s(\d+)ª Gen/;
+        const match = cpu.match(regex);
+        if (!match) return {tipo: "i3", gen: 0};
+        return {tipo: match[1], gen: parseInt(match[2], 10)};
+      }
+      cpus.sort((a,b) => {
+        const aParsed = parseCPU(a);
+        const bParsed = parseCPU(b);
+        if (pesosGen[aParsed.tipo] !== pesosGen[bParsed.tipo]) {
+          return pesosGen[bParsed.tipo] - pesosGen[aParsed.tipo];
+        } 
+        return bParsed.gen - aParsed.gen;
+      });
+      return cpus[0];
+    }
+
+    function gerarResultadoPreferencias(preferencias) {
+      let textoPrefs = '';
+      if (preferencias.includes('bateria')) {
+        textoPrefs += '<p>🔋 <strong>Bateria:</strong> Amperagem recomendada: 6000mAh ou mais para durar o dia todo.</p>';
+      } else {
+        textoPrefs += '<p>🔋 <strong>Bateria:</strong> Bateria padrão, cerca de 4000mAh.</p>';
+      }
+      if (preferencias.includes('telaIPS')) {
+        textoPrefs += '<p>🖥️ <strong>Tela:</strong> Tipo IPS, cores vivas e melhor ângulo de visão.</p>';
+      } else if (preferencias.includes('telaTN')) {
+        textoPrefs += '<p>🖥️ <strong>Tela:</strong> Tipo TN, mais simples e com menor custo.</p>';
+      } else {
+        textoPrefs += '<p>🖥️ <strong>Tela:</strong> Tipo padrão, não especificado.</p>';
+      }
+      if (preferencias.includes('telaGrande')) {
+        textoPrefs += '<p>📏 Tela grande (15"+) para melhor visualização.</p>';
+      }
+      if (preferencias.includes('upgrades')) {
+        textoPrefs += '<p>🔧 Suporte a upgrades para memória e armazenamento.</p>';
+      }
+      if (preferencias.includes('teclado')) {
+        textoPrefs += '<p>💡 Teclado retroiluminado para ambientes com pouca luz.</p>';
+      }
+      return textoPrefs;
+    }
+
+    function gerarResultadoNotebook() {
+      const apps = JSON.parse(localStorage.getItem('appsNotebook') || '[]');
+      const gpuSelecionada = localStorage.getItem('gpuNotebook') || '';
+      const storageType = localStorage.getItem('storageTypeNotebook') || 'ssd';
+      const preferencias = JSON.parse(localStorage.getItem('preferenciasNotebook') || '[]');
+
+      if (!apps.length) {
+        document.getElementById('resultado').innerHTML = '<p>Nenhum aplicativo selecionado!</p>';
+        return;
+      }
+
+      let totalRamApps = 0;
+      let totalStorageApps = 0;
+      const cpusMinimas = [];
+      const cpusIdeais = [];
+
+      apps.forEach(app => {
+        const info = appsSpecsNote[app];
+        if (info) {
+          totalRamApps += info.ram;
+          totalStorageApps += info.armazenamento;
+          cpusMinimas.push(info.cpu);
+          cpusIdeais.push(info.cpuIdeal);
+        }
+      });
+
+      const qtdJogosPesados = apps.filter(app => jogosPesados.includes(app)).length;
+
+      let armazenamentoGB = 0;
+      if (storageType === 'ssd') {
+        if (qtdJogosPesados >= 2) armazenamentoGB = 2000;
+        else if (qtdJogosPesados === 1) armazenamentoGB = 1000;
+        else armazenamentoGB = Math.max(totalStorageApps * 50, 256);
+      } else if (storageType === 'hd') {
+        armazenamentoGB = Math.max(totalStorageApps * 100, 500);
+      }
+
+      const ramMin = arredondar(totalRamApps, 'ram');
+      const ramIdeal = ramMin * 2;
+      const armazenamentoMin = arredondar(armazenamentoGB, 'armazenamento');
+      const armazenamentoIdeal = armazenamentoMin * 2;
+
+      const cpuMin = escolherCPU(cpusMinimas);
+      const cpuIdeal = escolherCPU(cpusIdeais);
+
+      let resultadoHTML = `
+        <div class="result-box">
+          <p><strong>Armazenamento total dos apps:</strong> ${totalStorageApps} GB</p>
+          <p><strong>RAM total dos apps:</strong> ${totalRamApps} GB</p>
+        </div>
+
+        <div class="result-box">
+          <p>🧠 <strong>RAM mínima:</strong> ${ramMin} GB</p>
+          <p>🧠 <strong>RAM ideal:</strong> ${ramIdeal} GB</p>
+          <p>💽 <strong>Armazenamento mínimo:</strong> ${armazenamentoMin} GB (${storageType.toUpperCase()})</p>
+          <p>💽 <strong>Armazenamento ideal:</strong> ${armazenamentoIdeal} GB (${storageType.toUpperCase()})</p>
+        </div>
+
+        <div class="result-box">
+          <p>⚙️ <strong>CPU mínima:</strong> ${cpuMin}</p>
+          <p>🚀 <strong>CPU ideal:</strong> ${cpuIdeal}</p>
+          <p>🎮 <strong>GPU recomendada:</strong> ${gpuSelecionada.toUpperCase()}</p>
+        </div>
+
+        <hr />
+
+        <div class="result-box">
+          ${gerarResultadoPreferencias(preferencias)}
+        </div>
+      `;
+
+      document.getElementById('resultado').innerHTML = resultadoHTML;
+    }
+
+    gerarResultadoNotebook();
+  </script>
+</body>
+</html>
