@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartMatch - Resultado da Recomendação</title>
+  <link rel="stylesheet" href="/Css/results-cell.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="form-container">
+    <h1>Recomendação de Especificações</h1>
+    <div id="resultado"></div>
+    <a href="/src/results-cell.html" class="btn-voltar">← Voltar e editar seleção</a>
+  </div>
+
+  <script>
+    const appsSpecs = {
+      nubank: { armazenamentoGB: 0.1, ramGB: 0.2, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      caixa: { armazenamentoGB: 0.1, ramGB: 0.15, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      bb: { armazenamentoGB: 0.15, ramGB: 0.2, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      itau: { armazenamentoGB: 0.1, ramGB: 0.18, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      inter: { armazenamentoGB: 0.1, ramGB: 0.15, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      whatsapp: { armazenamentoGB: 0.3, ramGB: 0.3, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      instagram: { armazenamentoGB: 0.4, ramGB: 0.5, processadorMin: "Snapdragon 410", processadorIdeal: "Snapdragon 660" },
+      facebook: { armazenamentoGB: 0.35, ramGB: 0.4, processadorMin: "Snapdragon 410", processadorIdeal: "Snapdragon 660" },
+      telegram: { armazenamentoGB: 0.15, ramGB: 0.25, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      tiktok: { armazenamentoGB: 0.4, ramGB: 0.5, processadorMin: "Snapdragon 430", processadorIdeal: "Snapdragon 660" },
+      freefire: { armazenamentoGB: 2, ramGB: 2, processadorMin: "Snapdragon 410", processadorIdeal: "Snapdragon 660" },
+      cod: { armazenamentoGB: 3, ramGB: 3, processadorMin: "Snapdragon 430", processadorIdeal: "Snapdragon 660" },
+      genshin: { armazenamentoGB: 12, ramGB: 6, processadorMin: "Snapdragon 845", processadorIdeal: "Snapdragon 855" },
+      roblox: { armazenamentoGB: 1, ramGB: 2, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      minecraft: { armazenamentoGB: 4, ramGB: 3, processadorMin: "Snapdragon 660", processadorIdeal: "Snapdragon 855" },
+      youtube: { armazenamentoGB: 0.2, ramGB: 0.2, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      netflix: { armazenamentoGB: 0.3, ramGB: 0.3, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      spotify: { armazenamentoGB: 0.1, ramGB: 0.15, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      prime: { armazenamentoGB: 0.15, ramGB: 0.2, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" },
+      disneyplus: { armazenamentoGB: 0.15, ramGB: 0.2, processadorMin: "Snapdragon 400", processadorIdeal: "Snapdragon 625" }
+    };
+
+    function getParams() {
+      const query = window.location.search.substring(1);
+      const vars = query.split('&');
+      const params = {};
+      vars.forEach(v => {
+        const [key, val] = v.split('=');
+        if (!params[key]) params[key] = [];
+        params[key].push(decodeURIComponent(val));
+      });
+      return params;
+    }
+
+    function arredondaArmazenamento(real) {
+      if (real <= 16) return 16;
+      if (real <= 32) return 32;
+      if (real <= 64) return 64;
+      if (real <= 128) return 128;
+      if (real <= 256) return 256;
+      return 512;
+    }
+
+    function arredondaRam(real) {
+      if (real <= 2) return 2;
+      if (real <= 4) return 4;
+      if (real <= 6) return 6;
+      if (real <= 8) return 8;
+      if (real <= 12) return 12;
+      return 16;
+    }
+
+    function ordenarProcessadores(lista) {
+      const ordem = [
+        "Snapdragon 400", "Snapdragon 410", "Snapdragon 430", "Snapdragon 600", "Snapdragon 625",
+        "Snapdragon 660", "Snapdragon 845", "Snapdragon 855", "Snapdragon 888",
+        "Snapdragon 8 Gen 1", "Snapdragon 8 Gen 2"
+      ];
+      const set = [...new Set(lista)];
+      return set.sort((a, b) => ordem.indexOf(a) - ordem.indexOf(b));
+    }
+
+    function gerarRecomendacao() {
+      const params = getParams();
+      const apps = params.app || [];
+
+      if (apps.length === 0) {
+        const localApps = JSON.parse(localStorage.getItem('appsSelecionados') || '[]');
+        if(localApps.length === 0) {
+          document.getElementById('resultado').innerHTML = '<p>❌ Nenhum app selecionado.</p>';
+          return;
+        } else {
+          apps.push(...localApps);
+        }
+      }
+
+      localStorage.setItem('appsSelecionados', JSON.stringify(apps));
+
+      let totalArmazenamento = 0;
+      let totalRam = 0;
+      const listaMinimos = [];
+      const listaIdeais = [];
+
+      apps.forEach(app => {
+        const appInfo = appsSpecs[app];
+        if (appInfo) {
+          totalArmazenamento += appInfo.armazenamentoGB;
+          totalRam += appInfo.ramGB;
+          listaMinimos.push(appInfo.processadorMin);
+          listaIdeais.push(appInfo.processadorIdeal);
+        }
+      });
+
+      const armazenamentoMinimo = arredondaArmazenamento(totalArmazenamento);
+      const armazenamentoIdeal = arredondaArmazenamento(totalArmazenamento * 1.5);
+      const memoriaMinima = arredondaRam(totalRam);
+      const memoriaIdeal = arredondaRam(totalRam * 1.5);
+      const processadoresMinimos = ordenarProcessadores(listaMinimos);
+      const processadoresIdeais = ordenarProcessadores(listaIdeais);
+
+    document.getElementById('resultado').innerHTML = `
+  <p><strong>🧠 Memória RAM mínima:</strong> ${memoriaMinima} GB</p>
+  <p><strong>🚀 Memória RAM ideal:</strong> ${memoriaIdeal} GB</p>
+  <p><strong>💾 Armazenamento mínimo:</strong> ${armazenamentoMinimo} GB</p>
+  <p><strong>🗃️ Armazenamento ideal:</strong> ${armazenamentoIdeal} GB</p>
+  <p><strong>⚙️ Processadores mínimos:</strong> ${processadoresMinimos.join(", ")}</p>
+  <p><strong>⚙️ Processadores ideais:</strong> ${processadoresIdeais.join(", ")}</p>
+`;
+    }
+
+    gerarRecomendacao();
+  </script>
+</body>
+</html>
