@@ -7,7 +7,6 @@
   <title>SmartMatch - Escolher Notebook</title>
   <link rel="stylesheet" href="/Css/results-note.css" />
 </head>
-
 <body>
   <div id="header-placeholder"></div>
 
@@ -43,6 +42,7 @@
               Eclipse</label>
             <label><input type="checkbox" value="xampp" /><span></span> XAMPP /
               MySQL</label>
+            <label><input type="checkbox" value="outros" /><span></span> Outros...</label>
           </div>
         </fieldset>
 
@@ -73,29 +73,41 @@
               CapCut</label>
             <label><input type="checkbox" value="davinci" /><span></span> DaVinci
               Resolve</label>
+               <label><input type="checkbox" value="outros" /><span></span> Outros...</label>
           </div>
         </fieldset>
 
         <fieldset>
           <legend>Comunicação e Navegação</legend>
           <div class="checkbox-grid">
-            <label><input type="checkbox" value="chrome" /><span></span> Google
+
+
+          <label><input type="checkbox" value="chrome" /><span></span> Google
               Chrome</label>
-            <label><input type="checkbox" value="firefox" /><span></span>
+            <label><input type="checkbox" value="firefox" /><span></span> Mozilla
               Firefox</label>
             <label><input type="checkbox" value="edge" /><span></span> Microsoft
               Edge</label>
+            <label><input type="checkbox" value="safari" /><span></span>
+              Safari</label>
             <label><input type="checkbox" value="opera" /><span></span>
               Opera</label>
+            <label><input type="checkbox" value="brave" /><span></span>
+              Brave</label>
+            <label><input type="checkbox" value="vivaldi" /><span></span>
+              Vivaldi</label>
+            <label><input type="checkbox" value="tor" /><span></span> Tor
+              Browser</label>
+            <label><input type="checkbox" value="duckduckgo" /><span></span>
+              DuckDuckGo Browser</label>
+            <label><input type="checkbox" value="yandex" /><span></span> Yandex Browser</label>
             <label><input type="checkbox" value="teams" /><span></span> Microsoft
               Teams</label>
-            <label><input type="checkbox" value="zoom" /><span></span> Zoom</label>
-            <label><input type="checkbox" value="outlook" /><span></span> Outlook
-              / Webmail</label>
             <label><input type="checkbox" value="discord" /><span></span>
               Discord</label>
             <label><input type="checkbox" value="whatsapp" /><span></span>
               WhatsApp</label>
+               <label><input type="checkbox" value="outros" /><span></span> Outros...</label>
           </div>
         </fieldset>
 
@@ -122,22 +134,35 @@
               RP</label>
             <label><input type="checkbox" value="genshin" /><span></span> Genshin
               Impact</label>
+               <label><input type="checkbox" value="outros" /><span></span> Outros...</label>
           </div>
         </fieldset>
 
         <fieldset>
           <legend>Placa de Vídeo (Escolha uma)</legend>
           <div class="checkbox-grid">
-            <label><input type="radio" name="gpu" value="integrada" />
-              Integrada</label>
-            <label><input type="radio" name="gpu" value="gtx1650" /> GTX
-              1650</label>
-            <label><input type="radio" name="gpu" value="rtx3050" /> RTX
-              3050</label>
-            <label><input type="radio" name="gpu" value="rtx4060" /> RTX
-              4060</label>
-            <label><input type="radio" name="gpu" value="rtx4070" /> RTX
-              4070</label>
+           <!-- Integradas -->
+            <label><input type="radio" name="gpu" value="integrada-intel-uhd" /> Intel UHD Graphics</label>
+            <label><input type="radio" name="gpu" value="integrada-radeon-vega" /> Radeon Vega (integrada)</label>
+
+            <!-- Básicas Dedicadas -->
+            <label><input type="radio" name="gpu" value="mx450" /> NVIDIA MX450</label>
+            <label><input type="radio" name="gpu" value="gtx1650" /> GTX 1650</label>
+
+            <!-- Intermediárias -->
+            <label><input type="radio" name="gpu" value="rtx3050" /> RTX 3050</label>
+            <label><input type="radio" name="gpu" value="rtx3060" /> RTX 3060</label>
+            <label><input type="radio" name="gpu" value="rx6600m" /> RX 6600M</label>
+
+            <!-- Avançadas -->
+            <label><input type="radio" name="gpu" value="rtx4060" /> RTX 4060</label>
+            <label><input type="radio" name="gpu" value="rtx4070" /> RTX 4070</label>
+            <label><input type="radio" name="gpu" value="rtx4080" /> RTX 4080</label>
+            <label><input type="radio" name="gpu" value="rx7800xt" /> RX 7800 XT</label>
+
+            <!-- Outros -->
+            <label><input type="checkbox" value="outros" /><span></span> Outros...</label>
+
           </div>
         </fieldset>
 
@@ -158,12 +183,7 @@
               Tela IPS</label>
             <label><input type="radio" name="tipoTela" value="TN" /><span></span>
               Tela TN</label>
-            <label><input type="checkbox" value="telaGrande" /><span></span> Tela
-              grande (15"+)</label>
-            <label><input type="checkbox" value="upgrades" /><span></span> Suporte
-              a upgrades</label>
-            <label><input type="checkbox" value="teclado" /><span></span> Teclado
-              retroiluminado</label>
+               <label><input type="checkbox" value="outros" /><span></span> Outros...</label>
           </div>
         </fieldset>
 
