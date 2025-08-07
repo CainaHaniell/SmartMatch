@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SmartMatch - Resultado Celular</title>
+    <link rel="stylesheet" href="/Css/resultado-celular.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet"
+    />
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <div class="floating-elements">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
+
+        <section class="result-container fade-in">
+            <h1>Resultado da Recomendação</h1>
+            <div id="resultado"></div>
+            <button id="btn-voltar">← Voltar e editar seleção</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+        <span>© 2025 SmartMach - Todos os direitos reservados</span>
+    </footer>
+
+    <script>
+        fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok " + response.statusText);
+                }
+                return response.text();
+            })
+            .then((data) => {
+                document.getElementById("header-placeholder").innerHTML = data;
+            })
+            .catch((error) => {
+                console.error(
+                    "There has been a problem with your fetch operation for header.html:",
+                    error
+                );
+            });
+
+        const appsSpecs = {
+            // apps de banco
+            nubank: { ramMin: 80, ramMax: 150, ghz: 1.0, armazenamento: 0.4 },
+            caixa: { ramMin: 100, ramMax: 200, ghz: 1.0, armazenamento: 0.6 },
+            bb: { ramMin: 90, ramMax: 180, ghz: 1.0, armazenamento: 0.5 },
+            itau: { ramMin: 85, ramMax: 170, ghz: 1.0, armazenamento: 0.45 },
+            "caixa-tem": { ramMin: 70, ramMax: 120, ghz: 1.0, armazenamento: 0.35 },
+            picpay: { ramMin: 100, ramMax: 180, ghz: 1.0, armazenamento: 0.5 },
+            pagbank: { ramMin: 80, ramMax: 150, ghz: 1.0, armazenamento: 0.4 },
+            bradesco: { ramMin: 90, ramMax: 180, ghz: 1.0, armazenamento: 0.55 },
+            inter: { ramMin: 80, ramMax: 160, ghz: 1.0, armazenamento: 0.4 },
+            next: { ramMin: 70, ramMax: 120, ghz: 1.0, armazenamento: 0.35 },
+            santander: { ramMin: 85, ramMax: 170, ghz: 1.0, armazenamento: 0.45 },
+            "banco-will": { ramMin: 90, ramMax: 180, ghz: 1.0, armazenamento: 0.5 },
+            "mercado-pago": { ramMin: 90, ramMax: 170, ghz: 1.0, armazenamento: 0.45 },
+
+            // redes sociais
+            whatsapp: { ramMin: 120, ramMax: 250, ghz: 1.0, armazenamento: 4 },
+            instagram: { ramMin: 200, ramMax: 400, ghz: 1.2, armazenamento: 3.5 },
+            facebook: { ramMin: 250, ramMax: 500, ghz: 1.2, armazenamento: 5 },
+            telegram: { ramMin: 80, ramMax: 150, ghz: 1.0, armazenamento: 1.5 },
+            tiktok: { ramMin: 200, ramMax: 350, ghz: 1.4, armazenamento: 3 },
+            kwai: { ramMin: 150, ramMax: 280, ghz: 1.2, armazenamento: 2 },
+            x: { ramMin: 100, ramMax: 200, ghz: 1.0, armazenamento: 1.2 },
+            threads: { ramMin: 90, ramMax: 180, ghz: 1.0, armazenamento: 0.8 },
+            discord: { ramMin: 120, ramMax: 250, ghz: 1.2, armazenamento: 1 },
+            pinterest: { ramMin: 80, ramMax: 160, ghz: 1.0, armazenamento: 0.8 },
+            tinder: { ramMin: 60, ramMax: 120, ghz: 1.0, armazenamento: 0.3 },
+
+            // compras
+            "amazon-shopping": { ramMin: 250, ramMax: 450, ghz: 1.2, armazenamento: 0.5 },
+            shopee: { ramMin: 200, ramMax: 400, ghz: 1.2, armazenamento: 0.4 },
+            temu: { ramMin: 180, ramMax: 350, ghz: 1.0, armazenamento: 0.35 },
+            aliexpress: { ramMin: 150, ramMax: 300, ghz: 1.0, armazenamento: 0.3 },
+            shein: { ramMin: 200, ramMax: 400, ghz: 1.2, armazenamento: 0.4 },
+            kabum: { ramMin: 100, ramMax: 200, ghz: 1.0, armazenamento: 0.2 },
+            netshoes: { ramMin: 90, ramMax: 180, ghz: 1.0, armazenamento: 0.18 },
+            centauro: { ramMin: 80, ramMax: 150, ghz: 1.0, armazenamento: 0.15 },
+            americanas: { ramMin: 150, ramMax: 300, ghz: 1.0, armazenamento: 0.3 },
+            "mercado-livre": { ramMin: 220, ramMax: 420, ghz: 1.2, armazenamento: 0.45 },
+            ifood: { ramMin: 250, ramMax: 500, ghz: 1.5, armazenamento: 0.6 },
+            olx: { ramMin: 120, ramMax: 250, ghz: 1.0, armazenamento: 0.25 },
+
+            // jogos
+            freefire: { ramMin: 800, ramMax: 1500, ghz: 2.0, armazenamento: 5 },
+            cod: { ramMin: 1500, ramMax: 3000, ghz: 2.0, armazenamento: 12 },
+            genshin: { ramMin: 2000, ramMax: 4000, ghz: 3.5, armazenamento: 35 },
+            roblox: { ramMin: 400, ramMax: 800, ghz: 2.0, armazenamento: 3 },
+            minecraft: { ramMin: 500, ramMax: 1000, ghz: 2.0, armazenamento: 3 },
+            "plants-vs-zombie-2": { ramMin: 200, ramMax: 400, ghz: 1.5, armazenamento: 2 },
+            "8-ball-pool": { ramMin: 80, ramMax: 150, ghz: 1.0, armazenamento: 0.4 },
+            "subway-surfers": { ramMin: 60, ramMax: 120, ghz: 1.0, armazenamento: 0.3 },
+            "clash-royale": { ramMin: 300, ramMax: 600, ghz: 1.4, armazenamento: 2 },
+            "dream-league-soccer-2025": { ramMin: 250, ramMax: 500, ghz: 1.6, armazenamento: 1.5 },
+            pou: { ramMin: 30, ramMax: 60, ghz: 0.8, armazenamento: 0.1 },
+            "brawl-stars": { ramMin: 400, ramMax: 800, ghz: 1.6, armazenamento: 3.5 },
+            "among-us": { ramMin: 200, ramMax: 400, ghz: 1.0, armazenamento: 1.2 },
+            "pubg-mobile": { ramMin: 1200, ramMax: 2500, ghz: 1.8, armazenamento: 80 },
+            xadrez: { ramMin: 40, ramMax: 80, ghz: 0.8, armazenamento: 0.15 },
+
+            // navegadores
+            chrome: { ramMin: 150, ramMax: 300, ghz: 1.0, armazenamento: 0.4 },
+            firefox: { ramMin: 120, ramMax: 250, ghz: 1.0, armazenamento: 0.35 },
+            edge: { ramMin: 140, ramMax: 280, ghz: 1.0, armazenamento: 0.38 },
+            safari: { ramMin: 100, ramMax: 200, ghz: 1.0, armazenamento: 0.3 },
+            opera: { ramMin: 100, ramMax: 200, ghz: 1.0, armazenamento: 0.25 },
+            brave: { ramMin: 110, ramMax: 220, ghz: 1.0, armazenamento: 0.28 },
+            duckduckgo: { ramMin: 80, ramMax: 150, ghz: 1.0, armazenamento: 0.15 },
+
+            // streaming
+            youtube: { ramMin: 200, ramMax: 400, ghz: 1.2, armazenamento: 2 },
+            netflix: { ramMin: 250, ramMax: 500, ghz: 1.4, armazenamento: 3 },
+            spotify: { ramMin: 150, ramMax: 300, ghz: 1.0, armazenamento: 5 },
+            prime: { ramMin: 230, ramMax: 450, ghz: 1.4, armazenamento: 2.5 },
+            crunchyroll: { ramMin: 180, ramMax: 350, ghz: 1.2, armazenamento: 1.5 },
+            disneyplus: { ramMin: 200, ramMax: 400, ghz: 1.4, armazenamento: 2 },
+            twitch: { ramMin: 200, ramMax: 350, ghz: 1.2, armazenamento: 1.5 },
+            "youtube-kids": { ramMin: 150, ramMax: 300, ghz: 1.0, armazenamento: 1 },
+            globoplay: { ramMin: 180, ramMax: 330, ghz: 1.2, armazenamento: 1.2 },
+            "pluto-tv": { ramMin: 100, ramMax: 200, ghz: 1.0, armazenamento: 0.4 },
+            viki: { ramMin: 90, ramMax: 180, ghz: 1.0, armazenamento: 0.3 },
+            deezer: { ramMin: 150, ramMax: 300, ghz: 1.0, armazenamento: 4 },
+            "hbo-max": { ramMin: 220, ramMax: 420, ghz: 1.4, armazenamento: 2.5 },
+        };
+
+        function gerarRecomendacao() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const appsSelecionados = [];
+            for (const [key, value] of urlParams.entries()) {
+                if (key === "app") {
+                    appsSelecionados.push(value.toLowerCase());
+                }
+            }
+
+            if (appsSelecionados.length === 0) {
+                document.getElementById("resultado").innerHTML =
+                    "<p>Nenhum app selecionado.</p><p>Volte para a página anterior para fazer sua seleção.</p>";
+                return;
+            }
+
+            // Guarda RAM mínimo e máximo de cada app selecionado
+            const ramMinList = [];
+            const ramMaxList = [];
+            let maxGhz = 0;
+            let armazenamentoAppsPequenos = 0;
+            let armazenamentoMaxJogosGrandes = 0;
+
+            for (const app of appsSelecionados) {
+                const specs = appsSpecs[app];
+                if (!specs) continue;
+
+                ramMinList.push(specs.ramMin);
+                ramMaxList.push(specs.ramMax);
+
+                if (specs.armazenamento > 5) {
+                    if (specs.armazenamento > armazenamentoMaxJogosGrandes) {
+                        armazenamentoMaxJogosGrandes = specs.armazenamento;
+                    }
+                } else {
+                    armazenamentoAppsPequenos += specs.armazenamento;
+                }
+
+                if (specs.ghz > maxGhz) maxGhz = specs.ghz;
+            }
+
+            // Pega só os dois apps que mais consomem RAM e soma
+            ramMinList.sort((a, b) => b - a);
+            ramMaxList.sort((a, b) => b - a);
+
+            const totalRamMinMB = ramMinList.slice(0, 3).reduce((acc, val) => acc + val, 0);
+            const totalRamMaxMB = ramMaxList.slice(0, 4).reduce((acc, val) => acc + val, 0);
+
+            const armazenamentoMinTotal = armazenamentoAppsPequenos + armazenamentoMaxJogosGrandes + 20;
+
+            function arredondarRamMercado(ramMB) {
+                const ramGB = Math.ceil(ramMB / 1024);
+                const valoresRam = [2, 4, 6, 8, 12];
+                for (let val of valoresRam) {
+                    if (ramGB <= val) return val;
+                }
+                return valoresRam[valoresRam.length - 1];
+            }
+
+            function arredondarArmazenamentoMercado(valor) {
+                const valoresArmazenamento = [32, 64, 128, 256, 512, 1024];
+                for (let val of valoresArmazenamento) {
+                    if (valor <= val) return val;
+                }
+                return valoresArmazenamento[valoresArmazenamento.length - 1];
+            }
+
+            const ramMinRecomendada = arredondarRamMercado(totalRamMinMB);
+            const ramMaxRecomendada = arredondarRamMercado(totalRamMaxMB);
+            const armazenamentoMinRecomendado = arredondarArmazenamentoMercado(armazenamentoMinTotal);
+            const armazenamentoIdealRecomendado = arredondarArmazenamentoMercado(
+                armazenamentoMinTotal + 10
+            );
+
+            const resultadoTexto = `
+                <p>Com base nos aplicativos selecionados, as especificações recomendadas para o seu celular são:</p>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <strong>RAM Mínima:</strong>
+                        <span>${ramMinRecomendada} GB</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>RAM Ideal:</strong>
+                        <span>${ramMaxRecomendada} GB</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Processador Ideal:</strong>
+                        <span>${maxGhz.toFixed(1)} GHz</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Armazenamento Mínimo:</strong>
+                        <span>${armazenamentoMinRecomendado} GB</span>
+                    </div>
+                    <div class="spec-item-armorzenamento">
+                        <strong>Armazenamento Ideal:</strong>
+                        <span>${armazenamentoIdealRecomendado} GB</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById("resultado").innerHTML = resultadoTexto;
+        }
+
+        window.onload = () => {
+            gerarRecomendacao();
+            document.querySelectorAll(".fade-in").forEach((el) => el.classList.add("visible"));
+            document.getElementById("btn-voltar").addEventListener("click", () => {
+                window.history.back();
+            });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SmartMatch - Sobre Nós</title>
+    <link rel="stylesheet" href="/Css/sobre-nos.css" />
+</head>
+<body>
+
+    <!-- Inclui o header externo -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">SOBRE NÓS</h1>
+            <p class="hero-subtitle">
+                Descubra as especificações perfeitas de notebooks e celulares<br />
+                com base no seu perfil de uso e necessidades
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="sobre">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="about-title slide-left">NOSSA MISSÃO</h2>
+                <p class="about-description fade-in">
+                    O <span class="about-highlight">SmartMatch</span> é um site desenvolvido para ajudar usuários a encontrar as especificações ideais de notebooks e celulares, com base nas suas necessidades específicas. Analisamos seu perfil de uso e recomendamos as configurações perfeitas para você.
+                </p>
+                <p class="about-description fade-in">
+                    Nossa missão é facilitar a comparação entre modelos e oferecer recomendações claras sobre processadores, memória RAM, armazenamento, tela e outros componentes, sem enrolação e de forma objetiva.
+                </p>
+            </div>
+            <div class="about-visual slide-right">
+                <div class="visual-container">
+                    <div class="visual-circle"></div>
+                    <div class="visual-circle"></div>
+                    <div class="visual-circle"></div>
+                    <div class="visual-center">SM</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-features">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Especificações Personalizadas</h3>
+                <p class="feature-description">
+                    Recomendamos RAM, processador, armazenamento e outros componentes baseados no seu tipo de uso.
+                </p>
+            </div>
+          
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Recomendações Confiáveis</h3>
+                <p class="feature-description">
+                    Sugestões baseadas em análise técnica real das especificações de cada dispositivo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section class="team-section" id="team">
+        <h2 class="about-title slide-left">NOSSA EQUIPE</h2>
+        <div class="team-members">
+            <div class="team-member fade-in">
+                <div class="member-photo">👨‍💻</div>
+                <h3 class="member-name">Cainã Haniel </h3>
+                <p class="member-role">Desenvolvedor front-end</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">👨‍💻</div>
+                <h3 class="member-name">Pedro Ernani</h3>
+                <p class="member-role">Pesquisa</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">👨‍💻</div>
+                <h3 class="member-name">Arthur come cimento</h3>
+                <p class="member-role">Pesquisa</p>
+            </div>
+           
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+        <span>© 2025 SmartMach - Todos os direitos reservados</span>
+    </footer>
+
+    <script>
+        // Carregar o header externo no div
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if(window.scrollY > 100){
+                header.style.background = 'rgba(15, 23, 42, 0.98)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth scroll nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+            anchor.addEventListener('click', function(e){
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target){
+                    target.scrollIntoView({behavior:'smooth', block:'start'});
+                }
+            });
+        });
+
+        // Stagger animation on feature cards
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach((card,i)=>{
+            card.style.animationDelay = `${i*0.2}s`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMatch - Encontre o Dispositivo Perfeito</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+   
+    <link rel="stylesheet" href="/Css/index.css"> <!-- Caso tenha um CSS geral -->
+
+</head>
+<body>
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Encontre o Dispositivo Perfeito</h1>
+            <p>Sem enrolação, sem complicação. Apenas responda algumas perguntas simples e descubra qual celular ou notebook é ideal pra você.</p>
+        </div>
+    </section>
+
+    <!-- Device Selection -->
+    <section class="device-selection">
+        <h2 class="section-title">Escolha seu Dispositivo</h2>
+        
+        <div class="device-grid">
+            <a href="/src/Formulario-cel.html" class="device-card">
+                <div class="device-icon">📱</div>
+                <h3>Smartphones</h3>
+                <p>Encontre o celular ideal para suas necessidades. Do básico para WhatsApp até o top de linha para gaming e trabalho.</p>
+            </a>
+            
+            <a href="/src/Formulario-note.html" class="device-card">
+                <div class="device-icon">💻</div>
+                <h3>Notebooks</h3>
+                <p>Descubra o laptop perfeito para trabalho, estudos ou entretenimento. Vamos te ajudar a escolher sem erro.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+        <span>© 2025 SmartMach - Todos os direitos reservados</span>
+    </footer>
+
+    <!-- Script pra carregar o Header -->
+    <script>
+        fetch('header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        });
+    </script>
+
+</body>
+</html>

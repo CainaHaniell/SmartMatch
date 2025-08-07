@@ -1,0 +1,228 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER (para o conteúdo carregado via fetch) */
+#header-placeholder {
+    width: 100%;
+}
+
+.main-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 30px 20px;
+    z-index: 2;
+}
+
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.05));
+    animation: float 6s ease-in-out infinite;
+    filter: blur(10px);
+}
+
+.floating-shape:nth-child(1) { width: 150px; height: 150px; top: 15%; left: 10%; }
+.floating-shape:nth-child(2) { width: 100px; height: 100px; top: 70%; right: 15%; animation-delay: 2s; }
+.floating-shape:nth-child(3) { width: 80px; height: 80px; bottom: 20%; left: 80%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* FOOTER */
+.footer {
+    background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+    padding: 40px 30px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.footer span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+}
+
+/* Estilos específicos para a página de resultado */
+.result-container {
+    max-width: 800px; /* Mais largo */
+    width: 90%;
+    padding: 40px 30px;
+    background: rgba(15, 23, 42, 0.85);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(6, 182, 212, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    min-height: 350px; /* Altura mínima ajustada */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-container h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+    line-height: 1.2; /* Para deixar o título mais "enxuto" verticalmente */
+}
+
+#resultado {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    color: #e0e7ff;
+    line-height: 1.6;
+    text-align: center; /* Centraliza o texto de introdução */
+    width: 100%;
+}
+
+#resultado p {
+    margin-bottom: 20px;
+}
+
+#resultado strong {
+    color: #06b6d4;
+    font-weight: 600;
+}
+
+.specs-grid {
+    display: grid;
+    /* Colunas ajustáveis: 2 colunas, mas o item de armazenamento ocupa as duas */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%; /* Ocupa a largura total disponível */
+}
+
+.spec-item {
+    background-color: rgba(6, 182, 212, 0.1);
+    border: 1px solid #06b6d4;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spec-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(6, 182, 212, 0.4);
+}
+
+.spec-item strong {
+    font-size: 1rem;
+    color: #3b82f6;
+    margin-bottom: 5px;
+}
+
+.spec-item span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e0e7ff;
+}
+
+/* Estilo para o item de armazenamento, esticado no meio */
+.storage-item {
+    grid-column: 1 / -1; /* Ocupa todas as colunas disponíveis */
+    background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+    border-color: #3b82f6;
+    padding: 20px; /* Um pouco mais de padding para destaque */
+    margin-top: 10px; /* Espaçamento extra */
+}
+
+.storage-item strong {
+    font-size: 1.1rem; /* Fonte um pouco maior */
+    color: #fff;
+}
+
+.storage-item span {
+    font-size: 1.6rem; /* Fonte maior para o valor */
+}
+
+
+
+#btn-voltar {
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+}
+
+#btn-voltar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(6, 182, 212, 0.6);
+}
+
+/* Animação fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries para responsividade */
+@media (min-width: 600px) {
+    .specs-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .result-container {
+        padding: 50px 40px;
+    }
+}

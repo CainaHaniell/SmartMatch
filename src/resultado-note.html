@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/Css/resultado-notebook.css">
+    <title>SmartMatch - Resultado Notebook</title>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <div class="floating-elements">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
+
+        <div class="result-container fade-in">
+            <h1>💻 Recomendação de Especificações para Notebook</h1>
+            <div id="resultado"></div>
+            <a href="/src/Formulario-note.html" id="btn-voltar" class="btn-voltar">← Voltar e editar seleção</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá." - Salmos 37:5</p>
+        <span>© 2025 SmartMach - Todos os direitos reservados</span>
+    </footer>
+
+    <script>
+        // Dados das especificações por app
+       // Dados das especificações por app
+const appsSpecsNote = {
+    vscode: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    pycharm: { ram: 4, armazenamento: 1, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    androidstudio: { ram: 8, armazenamento: 4, cpu: "i5 8ª Gen", cpuIdeal: "i7 11ª Gen" },
+    netbeans: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    eclipse: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    xampp: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    photoshop: { ram: 8, armazenamento: 3, cpu: "i5 8ª Gen", cpuIdeal: "i7 10ª Gen" },
+    illustrator: { ram: 8, armazenamento: 3, cpu: "i5 8ª Gen", cpuIdeal: "i7 10ª Gen" },
+    after: { ram: 16, armazenamento: 6, cpu: "i7 9ª Gen", cpuIdeal: "i9 12ª Gen" },
+    premiere: { ram: 16, armazenamento: 6, cpu: "i7 9ª Gen", cpuIdeal: "i9 12ª Gen" },
+    autocad: { ram: 8, armazenamento: 4, cpu: "i5 9ª Gen", cpuIdeal: "i7 11ª Gen" },
+    blender: { ram: 16, armazenamento: 6, cpu: "i7 9ª Gen", cpuIdeal: "i9 12ª Gen" },
+    figma: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    canva: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    notion: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    obs: { ram: 8, armazenamento: 4, cpu: "i5 8ª Gen", cpuIdeal: "i7 10ª Gen" },
+    capcut: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    davinci: { ram: 16, armazenamento: 6, cpu: "i7 10ª Gen", cpuIdeal: "i9 13ª Gen" },
+    chrome: { ram: 4, armazenamento: 2, cpu: "i5 7ª Gen", cpuIdeal: "i7 9ª Gen" },
+    firefox: { ram: 3, armazenamento: 1, cpu: "i3 6ª Gen", cpuIdeal: "i5 8ª Gen" },
+    edge: { ram: 3, armazenamento: 1, cpu: "i3 6ª Gen", cpuIdeal: "i5 8ª Gen" },
+    opera: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    teams: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    zoom: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    outlook: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    discord: { ram: 4, armazenamento: 2, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    whatsapp: { ram: 2, armazenamento: 1, cpu: "i3 5ª Gen", cpuIdeal: "i5 8ª Gen" },
+    lol: { ram: 8, armazenamento: 20, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+    valorant: { ram: 8, armazenamento: 25, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+    csgo: { ram: 8, armazenamento: 20, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+    fortnite: { ram: 8, armazenamento: 25, cpu: "i5 10ª Gen", cpuIdeal: "i7 13ª Gen" },
+    minecraft: { ram: 6, armazenamento: 15, cpu: "i5 9ª Gen", cpuIdeal: "i7 11ª Gen" },
+    roblox: { ram: 4, armazenamento: 5, cpu: "i3 7ª Gen", cpuIdeal: "i5 10ª Gen" },
+    theSims: { ram: 8, armazenamento: 20, cpu: "i5 9ª Gen", cpuIdeal: "i7 12ª Gen" },
+    fifa: { ram: 8, armazenamento: 30, cpu: "i5 10ª Gen", cpuIdeal: "i7 13ª Gen" },
+    gta: { ram: 8, armazenamento: 30, cpu: "i5 10ª Gen", cpuIdeal: "i7 13ª Gen" },
+    genshin: { ram: 16, armazenamento: 40, cpu: "i7 11ª Gen", cpuIdeal: "i9 13ª Gen" },
+};
+
+const jogosPesados = ['lol', 'valorant', 'fortnite', 'gta', 'genshin', 'csgo', 'theSims', 'fifa'];
+
+// Função para arredondar para padrões de mercado, agora mais robusta
+function arredondar(valor, tipo) {
+    if (tipo === 'ram') {
+        const niveisRam = [4, 8, 16, 32, 64];
+        for (const nivel of niveisRam) {
+            if (valor <= nivel) {
+                return nivel;
+            }
+        }
+        return niveisRam[niveisRam.length - 1];
+    } else {
+        const niveisArmazenamento = [128, 256, 512, 1024, 2048, 4096];
+        for (const nivel of niveisArmazenamento) {
+            if (valor <= nivel) {
+                return nivel;
+            }
+        }
+        return niveisArmazenamento[niveisArmazenamento.length - 1];
+    }
+}
+
+// Lógica de seleção do CPU mais adequado
+function escolherCPU(cpus) {
+    const pesosGen = { "i3": 1, "i5": 2, "i7": 3, "i9": 4 };
+    function parseCPU(cpu) {
+        const regex = /(i\d)\s(\d+)ª Gen/;
+        const match = cpu.match(regex);
+        if (!match) return { tipo: "i3", gen: 0 };
+        return { tipo: match[1], gen: parseInt(match[2], 10) };
+    }
+    cpus.sort((a, b) => {
+        const aParsed = parseCPU(a);
+        const bParsed = parseCPU(b);
+        if (pesosGen[aParsed.tipo] !== pesosGen[bParsed.tipo]) {
+            return pesosGen[bParsed.tipo] - pesosGen[aParsed.tipo];
+        }
+        return bParsed.gen - aParsed.gen;
+    });
+    return cpus[0];
+}
+
+function gerarResultadoPreferencias(preferencias, tipoTela) {
+    let textoPrefs = '';
+    
+    if (preferencias.includes('bateria')) {
+        textoPrefs += '<p>🔋 <strong>Bateria:</strong> Amperagem recomendada: 6000mAh ou mais para durar o dia todo.</p>';
+    }
+    if (tipoTela === 'ips') {
+        textoPrefs += '<p>🖥️ <strong>Tela:</strong> Tipo IPS, cores vivas e melhor ângulo de visão.</p>';
+    } else if (tipoTela === 'tn') {
+        textoPrefs += '<p>🖥️ <strong>Tela:</strong> Tipo TN, mais simples e com menor custo.</p>';
+    }
+    
+    return textoPrefs;
+}
+
+function gerarResultadoNotebook() {
+    const apps = JSON.parse(localStorage.getItem('appsNotebook') || '[]');
+    const gpuSelecionada = localStorage.getItem('gpuNotebook') || 'Integrada';
+    const storageType = localStorage.getItem('storageTypeNotebook') || 'ssd';
+    const osSelecionado = localStorage.getItem('osNotebook') || 'windows';
+    const preferencias = JSON.parse(localStorage.getItem('preferenciasNotebook') || '[]');
+    const tipoTela = localStorage.getItem('tipoTelaNotebook') || '';
+
+    if (!apps.length) {
+        document.getElementById('resultado').innerHTML = '<p>Nenhum aplicativo selecionado!</p>';
+        return;
+    }
+
+    let totalRamApps = 0;
+    let totalStorageApps = 0;
+    const cpusMinimas = [];
+    const cpusIdeais = [];
+
+    apps.forEach(app => {
+        const info = appsSpecsNote[app];
+        if (info) {
+            totalRamApps += info.ram;
+            totalStorageApps += info.armazenamento;
+            cpusMinimas.push(info.cpu);
+            cpusIdeais.push(info.cpuIdeal);
+        }
+    });
+
+    const qtdJogosPesados = apps.filter(app => jogosPesados.includes(app)).length;
+
+    let armazenamentoMinimoGB = totalStorageApps;
+    if (qtdJogosPesados > 0) {
+      armazenamentoMinimoGB += qtdJogosPesados * 50; 
+    }
+    armazenamentoMinimoGB += 100; 
+
+    const ramMin = arredondar(totalRamApps, 'ram');
+    const ramIdeal = arredondar(totalRamApps * 2, 'ram');
+    const armazenamentoMin = arredondar(armazenamentoMinimoGB, 'armazenamento');
+    const armazenamentoIdeal = arredondar(armazenamentoMin * 2, 'armazenamento');
+
+    const cpuMin = escolherCPU(cpusMinimas);
+    const cpuIdeal = escolherCPU(cpusIdeais);
+
+    // Estrutura de divs separadas para mínimo e ideal, com títulos distintos
+    let resultadoHTML = `
+        <p>Com base nos seus aplicativos e preferências, a sua recomendação é:</p>
+
+        <div class="specs-grid">
+            <div class="spec-item">
+                <strong>CPU (Processador) Mínimo</strong>
+                <span>${cpuMin}</span>
+            </div>
+            <div class="spec-item">
+                <strong>CPU (Processador) Ideal</strong>
+                <span>${cpuIdeal}</span>
+            </div>
+            <div class="spec-item">
+                <strong>RAM (Memória) Mínima</strong>
+                <span>${ramMin} GB</span>
+            </div>
+            <div class="spec-item">
+                <strong>RAM (Memória) Ideal</strong>
+                <span>${ramIdeal} GB</span>
+            </div>
+            <div class="spec-item storage-item">
+                <strong>Armazenamento Mínimo</strong>
+                <span>${armazenamentoMin} GB</span>
+                <small>Tipo: ${storageType.toUpperCase()}</small>
+            </div>
+            <div class="spec-item storage-item">
+                <strong>Armazenamento Ideal</strong>
+                <span>${armazenamentoIdeal} GB</span>
+                <small>Tipo: ${storageType.toUpperCase()}</small>
+            </div>
+            <div class="spec-item">
+                <strong>GPU (Placa de Vídeo)</strong>
+                <span>${gpuSelecionada.toUpperCase()}</span>
+            </div>
+            <div class="spec-item">
+                <strong>Sistema Operacional</strong>
+                <span>${osSelecionado.charAt(0).toUpperCase() + osSelecionado.slice(1)}</span>
+            </div>
+        </div>
+
+        <div class="pref-list">
+            <h3>Preferências:</h3>
+            ${gerarResultadoPreferencias(preferencias, tipoTela)}
+        </div>
+    `;
+
+    document.getElementById('resultado').innerHTML = resultadoHTML;
+}
+
+fetch("header.html")
+    .then((res) => res.text())
+    .then((data) => {
+        document.getElementById("header-placeholder").innerHTML = data;
+        gerarResultadoNotebook();
+    });
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, {
+        threshold: 0.1
+    }
+);
+document
+    .querySelectorAll(".fade-in")
+    .forEach((el) => observer.observe(el));
+    </script>
+</body>
+
+</html>
+```
